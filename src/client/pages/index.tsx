@@ -4,11 +4,16 @@
 import React from 'react';
 import { NextPage } from 'next';
 
+/**
+ * Components
+ */
+import EmptyLayout from '../components/Layout/EmptyLayout';
+
 const HomePage: NextPage = () => {
   return (
-    <div>
-      <h1>Home Page</h1>
-    </div>
+    <EmptyLayout>
+      <h1>Home Page...</h1>
+    </EmptyLayout>
   );
 };
 
