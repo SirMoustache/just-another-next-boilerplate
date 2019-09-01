@@ -4,7 +4,7 @@ This app is build using [Next.js](https://nextjs.org) framework. For more detail
 
 ## Scripts
 
-### `npm start`
+### `npm run dev`
 
 This will start dev server. By default app will run on port 3000 [http://localhost:3000](http://localhost:3000)<br>
 To use another port, you can run `npm run dev -- -p <your port here>`.
