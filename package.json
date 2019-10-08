@@ -1,0 +1,21 @@
+{
+  "name": "just-another-next-boilerplate",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test:client",
+    "test:client": "cd src/client && npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SirMoustache/just-another-next-boilerplate.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SirMoustache/just-another-next-boilerplate/issues"
+  },
+  "homepage": "https://github.com/SirMoustache/just-another-next-boilerplate#readme"
+}
