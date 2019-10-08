@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "npm run test:client",
-    "test:client": "cd src/client && npm test"
+    "test:client": "cd src/client && npm test",
+    "install:all": "cd src/client && npm install"
   },
   "repository": {
     "type": "git",
