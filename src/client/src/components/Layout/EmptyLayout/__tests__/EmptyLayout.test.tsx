@@ -13,7 +13,7 @@ const children = <span>Test</span>;
 const renderComponent = (props = {}) =>
   render(<EmptyLayout {...props}>{children}</EmptyLayout>);
 
-describe('<A />', () => {
+describe('<EmptyLayout />', () => {
   afterEach(cleanup);
 
   it('should match snapshot', () => {
