@@ -9,13 +9,20 @@ import App from 'next/app';
  */
 import GlobalStyles from '../theme/GlobalStyles';
 
+/**
+ * Containers
+ */
+import StyledThemeProvider from '../containers/StyledThemeProvider';
+
 class WebClient extends App {
   render() {
     const { Component, pageProps } = this.props;
     return (
       <Fragment>
-        <GlobalStyles />
-        <Component {...pageProps} />
+        <StyledThemeProvider>
+          <GlobalStyles />
+          <Component {...pageProps} />
+        </StyledThemeProvider>
       </Fragment>
     );
   }
