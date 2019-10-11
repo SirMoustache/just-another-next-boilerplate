@@ -1,19 +1,15 @@
 import 'styled-components';
 
-type Color = {
+interface Color {
   main: string;
   dark: string;
   light: string;
-};
+}
+
+type ColorVariant = 'bg' | 'error' | 'active' | 'textPrimary' | 'textSecondary';
 
 interface Pallete {
-  pallete: {
-    bg: Color;
-    error: Color;
-    active: Color;
-    textPrimary: Color;
-    textSecondary: Color;
-  };
+  pallete: Record<ColorVariant, Color>;
 }
 
 interface Shadow {
@@ -37,14 +33,10 @@ interface Typography {
   };
 }
 
+type Breakpoint = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+
 interface Breakpoints {
-  breakpoints: {
-    xs: number;
-    sm: number;
-    md: number;
-    lg: number;
-    xl: number;
-  };
+  breakpoints: Record<Breakpoint, number>;
 }
 
 interface Guter {

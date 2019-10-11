@@ -1,0 +1,16 @@
+/**
+ * Absolute imports
+ */
+import styled from 'styled-components/macro';
+
+export const Container = styled.div`
+  width: 100%;
+  padding: 0 20px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media (min-width: 1280px) {
+    /* width: 1176px; */
+    width: 1280px;
+  }
+`;
