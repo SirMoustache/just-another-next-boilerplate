@@ -8,11 +8,12 @@ const prettierOptions = JSON.parse(
 module.exports = {
   parser: '@typescript-eslint/parser',
   extends: [
-    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
     'plugin:react/recommended',
     'prettier',
     'prettier/react',
   ],
+  plugins: ['prettier', 'react', 'react-hooks', '@typescript-eslint'],
   parserOptions: {
     sourceType: 'module',
     ecmaFeatures: {
@@ -20,8 +21,11 @@ module.exports = {
     },
     project: './tsconfig.json',
   },
-  plugins: ['prettier', 'react'],
+  env: {
+    jest: true,
+  },
   rules: {
     'prettier/prettier': ['error', prettierOptions],
+    '@typescript-eslint/explicit-function-return-type': 'off',
   },
 };
