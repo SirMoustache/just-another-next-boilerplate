@@ -14,7 +14,6 @@ const EmptyLayout = styled.main<EmptyLayoutProps>`
   flex-direction: column;
   justify-content: ${({ justify = 'center' }) => justify};
   align-items: ${({ align = 'center' }) => align};
-  background-color: #fff;
 `;
 
 export default EmptyLayout;

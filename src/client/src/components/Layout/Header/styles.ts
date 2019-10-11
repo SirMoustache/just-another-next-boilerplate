@@ -8,7 +8,7 @@ export type RootProps = {
 };
 
 export const Root = styled.header<RootProps>`
-  position: ${({ active }) => (active ? 'fixed' : 'relative;')};
+  position: ${({ active }): string => (active ? 'fixed' : 'relative;')};
   top: 0;
   left: 0;
   width: 100%;
@@ -20,7 +20,10 @@ export const Inner = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 6vw 8vw;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.28);
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.md}px) {
+    padding: 4vw 8vw 0;
+  }
 `;
 
 export const Logo = styled.div`
@@ -48,7 +51,7 @@ export const MobileMenu = styled.div`
   position: relative;
   z-index: 15;
 
-  @media (min-width: ${({ theme }) => theme.breakpoints.md}px) {
+  @media (min-width: ${({ theme }): number => theme.breakpoints.md}px) {
     display: none;
   }
 `;

@@ -5,16 +5,12 @@ import React from 'react';
 import { NextPage } from 'next';
 
 /**
- * Components
+ * Views
  */
-import EmptyLayout from '../components/Layout/EmptyLayout';
+import HomeView from '../views/HomeView';
 
 const HomePage: NextPage = () => {
-  return (
-    <EmptyLayout>
-      <h1>Home Page...</h1>
-    </EmptyLayout>
-  );
+  return <HomeView />;
 };
 
 export default HomePage;

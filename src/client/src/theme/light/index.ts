@@ -6,9 +6,14 @@ import { DefaultTheme } from 'styled-components';
 const theme: DefaultTheme = {
   pallete: {
     bg: {
-      main: '#f7f6ee',
+      main: '#f7f6ee', // or #f7f5f5
       dark: '#fff',
       light: '#fff',
+    },
+    bgSecondary: {
+      main: '#161c27',
+      dark: '#161c27',
+      light: '#161c27',
     },
     error: {
       main: 'red',

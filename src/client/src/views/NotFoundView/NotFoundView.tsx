@@ -1,7 +1,7 @@
 /**
  * Absolute imports
  */
-import React, { useEffect } from 'react';
+import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 
@@ -16,7 +16,7 @@ import A from '../../components/UI/A';
  */
 import { ErrorCode, ErrorDescription } from './styles';
 
-const NotFoundView = () => {
+const HomeView = () => {
   return (
     <EmptyLayout>
       <Head>
@@ -25,7 +25,7 @@ const NotFoundView = () => {
       <ErrorCode>404</ErrorCode>
       <ErrorDescription>
         Oops! I think you are lost little randonneur,{' '}
-        <Link href="/">
+        <Link href="/" passHref>
           <A title="Home Page">ride home!</A>
         </Link>
       </ErrorDescription>
@@ -33,4 +33,4 @@ const NotFoundView = () => {
   );
 };
 
-export default NotFoundView;
+export default HomeView;

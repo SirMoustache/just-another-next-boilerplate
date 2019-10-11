@@ -14,8 +14,7 @@ export const Root = styled.nav`
 `;
 
 export const NavigationLink = styled.a`
-  color: #fff;
-  padding: 16px 12px;
+  padding: ${({ theme }) => `${theme.gutter}px ${theme.gutter * 2}px`};
   text-decoration: none;
   display: block;
   cursor: pointer;
