@@ -2,7 +2,7 @@
  * Absolute imports
  */
 import React, { FC, Fragment } from 'react';
-import { ThemeProvider } from 'styled-components/macro';
+import { ThemeProvider } from 'styled-components';
 
 /**
  * Theme

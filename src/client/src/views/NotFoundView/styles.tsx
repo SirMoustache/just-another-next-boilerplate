@@ -1,7 +1,7 @@
 /**
  * Absolute imports
  */
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 
 export const ErrorCode = styled.h1`
   text-align: center;

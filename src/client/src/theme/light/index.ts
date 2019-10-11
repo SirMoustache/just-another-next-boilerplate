@@ -1,7 +1,7 @@
 /**
  * Absolute imports
  */
-import { DefaultTheme } from 'styled-components/macro';
+import { DefaultTheme } from 'styled-components';
 
 const theme: DefaultTheme = {
   pallete: {

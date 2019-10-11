@@ -1,7 +1,7 @@
 /**
  * Absolute imports
  */
-import styled, { css } from 'styled-components/macro';
+import styled, { css } from 'styled-components';
 
 export type TextColor = 'textSecondary';
 
