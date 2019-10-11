@@ -6,7 +6,13 @@ interface Color {
   light: string;
 }
 
-type ColorVariant = 'bg' | 'error' | 'active' | 'textPrimary' | 'textSecondary';
+type ColorVariant =
+  | 'bg'
+  | 'bgSecondary'
+  | 'error'
+  | 'active'
+  | 'textPrimary'
+  | 'textSecondary';
 
 interface Pallete {
   pallete: Record<ColorVariant, Color>;
