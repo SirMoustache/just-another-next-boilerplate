@@ -6,7 +6,7 @@ import { DefaultTheme } from 'styled-components/macro';
 const theme: DefaultTheme = {
   pallete: {
     bg: {
-      main: '#fff',
+      main: '#f7f6ee',
       dark: '#fff',
       light: '#fff',
     },
@@ -26,9 +26,9 @@ const theme: DefaultTheme = {
       light: '#000',
     },
     textPrimary: {
-      main: '#000',
+      main: '#232323',
       dark: '#000',
-      light: '#000',
+      light: '#2c3e50',
     },
   },
   gutter: 8,
@@ -39,13 +39,20 @@ const theme: DefaultTheme = {
     fontFamily: "'Roboto','Helvetica','Arial',sans-serif",
     sizes: {
       xs: '',
-      s: '',
-      default: '',
-      m: '',
+      sm: '',
+      default: '16px',
+      md: '',
       ml: '',
-      l: '',
+      lg: '',
       xl: '',
     },
+  },
+  breakpoints: {
+    xs: 0,
+    sm: 600,
+    md: 960,
+    lg: 1280,
+    xl: 1920,
   },
 };
 

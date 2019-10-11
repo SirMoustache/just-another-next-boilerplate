@@ -17,11 +17,12 @@ const GlobalStyles = createGlobalStyle`
   }
 
   html {
-    font-family: "Helvetica", Verdana, sans-serif;
+    font-family: ${({ theme }) => theme.typography.fontFamily};
     font-weight: 400;
     font-style: normal;
-    color: #2c3e50;
-    font-size: 16px;
+    color: ${({ theme }) => theme.pallete.textPrimary.main};
+    background-color: ${({ theme }) => theme.pallete.bg.main};
+    font-size: ${({ theme }) => theme.typography.sizes.default};
   }
 
   #__next {

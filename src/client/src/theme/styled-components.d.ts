@@ -27,20 +27,37 @@ interface Typography {
     fontFamily: string;
     sizes: {
       xs: string;
-      s: string;
+      sm: string;
       default: string;
-      m: string;
+      md: string;
       ml: string;
-      l: string;
+      lg: string;
       xl: string;
     };
   };
 }
 
+interface Breakpoints {
+  breakpoints: {
+    xs: number;
+    sm: number;
+    md: number;
+    lg: number;
+    xl: number;
+  };
+}
+
+interface Guter {
+  gutter: number;
+}
+
 // TypeScript definitions for styled-components
 // extended by using declaration merging
 declare module 'styled-components' {
-  export interface DefaultTheme extends Pallete, Shadow, Typography {
-    gutter: number;
-  }
+  export interface DefaultTheme
+    extends Pallete,
+      Shadow,
+      Typography,
+      Breakpoints,
+      Guter {}
 }
