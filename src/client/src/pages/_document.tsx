@@ -4,6 +4,7 @@
 import React, { Fragment } from 'react';
 import Document, {
   DocumentContext,
+  Html,
   Head,
   Main,
   NextScript,
@@ -46,7 +47,7 @@ export default class MyDocument extends Document {
 
   render() {
     return (
-      <html lang="en">
+      <Html lang="en">
         <Head>
           <link
             rel="shortcut icon"
@@ -58,7 +59,7 @@ export default class MyDocument extends Document {
           <Main />
           <NextScript />
         </body>
-      </html>
+      </Html>
     );
   }
 }
