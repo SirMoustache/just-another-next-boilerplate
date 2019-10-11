@@ -7,13 +7,8 @@ const prettierOptions = JSON.parse(
 
 module.exports = {
   parser: '@typescript-eslint/parser',
-  extends: [
-    'plugin:@typescript-eslint/recommended',
-    'plugin:react/recommended',
-    'prettier',
-    'prettier/react',
-  ],
-  plugins: ['prettier', 'react', 'react-hooks', '@typescript-eslint'],
+  extends: ['react-app', 'prettier', 'prettier/react'],
+  plugins: ['prettier'],
   parserOptions: {
     sourceType: 'module',
     ecmaFeatures: {
@@ -27,5 +22,6 @@ module.exports = {
   rules: {
     'prettier/prettier': ['error', prettierOptions],
     '@typescript-eslint/explicit-function-return-type': 'off',
+    'react/prop-types': 'off',
   },
 };
