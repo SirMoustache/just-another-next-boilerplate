@@ -26,7 +26,7 @@ const theme: DefaultTheme = {
       light: '#21d4fd',
     },
     textSecondary: {
-      main: '#000',
+      main: '#696969',
       dark: '#000',
       light: '#000',
     },
