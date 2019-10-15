@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<A /> should match snapshot 1`] = `
+exports[`<EmptyLayout /> should match snapshot 1`] = `
 <div>
   <main
-    class="sc-bdVaJa fuBkKa"
+    class="sc-bdVaJa jrzoca"
   >
     <span>
       Test

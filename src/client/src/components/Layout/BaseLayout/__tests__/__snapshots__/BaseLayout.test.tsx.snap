@@ -1,0 +1,107 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<BaseLayout /> should match snapshot 1`] = `
+<div>
+  <div
+    class="sc-jzJRlG faDjRE"
+  >
+    <header
+      class="sc-ifAKCX cwJIEf"
+    >
+      <div
+        class="sc-EHOje kLLRRQ"
+      >
+        <div
+          class="sc-bZQynM jdkaLI"
+        >
+          <img
+            alt="Logo"
+            class="sc-gzVnrw giKwVo"
+            src=""
+          />
+        </div>
+        <nav
+          class="sc-bdVaJa bmJbVs"
+        >
+          <a
+            class="sc-bwzfXH eHtOgw"
+            href="/"
+          >
+            Home
+          </a>
+          <a
+            class="sc-bwzfXH eHtOgw"
+            href="/about"
+          >
+            About
+          </a>
+          <a
+            class="sc-bwzfXH eHtOgw"
+            href="/contact"
+          >
+            Contact
+          </a>
+        </nav>
+        <div
+          class="sc-htoDjs jWUwCq"
+        >
+          <div
+            class="sc-iwsKbI haoHLS"
+          >
+            <div
+              class="sc-htpNat cdeDWD"
+            >
+              <span
+                class="sc-bxivhb ePlLNy"
+              />
+              <span
+                class="sc-bxivhb ePlLNy"
+              />
+              <span
+                class="sc-bxivhb ePlLNy"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <span
+      data-test="child"
+    >
+      Test
+    </span>
+    <footer
+      class="sc-gZMcBi gfBlKl"
+    >
+      <div
+        class="sc-gqjmRU ljvdtu"
+      >
+        <div
+          class="sc-VigVT fjkIrR"
+        >
+          <h4
+            class="sc-jTzLTM gWHzEN"
+          >
+            Products
+          </h4>
+          <div
+            class="sc-fjdhpX bPqjga"
+          >
+            Random Item
+          </div>
+          <div
+            class="sc-fjdhpX bPqjga"
+          >
+            More Items
+          </div>
+          <div
+            class="sc-fjdhpX bPqjga"
+          >
+            Even More Items
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+</div>
+`;
