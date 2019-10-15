@@ -5,13 +5,22 @@ import React from 'react';
 import { render, cleanup } from '@testing-library/react';
 
 /**
- *
+ * Containers
+ */
+import StyledThemeProvider from '../../../../containers/StyledThemeProvider';
+
+/**
+ * Components
  */
 import EmptyLayout from '../EmptyLayout';
 
 const children = <span>Test</span>;
 const renderComponent = (props = {}) =>
-  render(<EmptyLayout {...props}>{children}</EmptyLayout>);
+  render(
+    <StyledThemeProvider>
+      <EmptyLayout {...props}>{children}</EmptyLayout>
+    </StyledThemeProvider>,
+  );
 
 describe('<EmptyLayout />', () => {
   afterEach(cleanup);

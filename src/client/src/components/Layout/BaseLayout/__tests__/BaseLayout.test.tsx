@@ -5,13 +5,22 @@ import React from 'react';
 import { render, cleanup } from '@testing-library/react';
 
 /**
- *
+ * Containers
+ */
+import StyledThemeProvider from '../../../../containers/StyledThemeProvider';
+
+/**
+ * Components
  */
 import BaseLayout from '../BaseLayout';
 
-const children = <span>Test</span>;
+const children = <span data-test="child">Test</span>;
 const renderComponent = (props = {}) =>
-  render(<BaseLayout {...props}>{children}</BaseLayout>);
+  render(
+    <StyledThemeProvider>
+      <BaseLayout {...props}>{children}</BaseLayout>
+    </StyledThemeProvider>,
+  );
 
 describe('<BaseLayout />', () => {
   afterEach(cleanup);
@@ -21,14 +30,14 @@ describe('<BaseLayout />', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('should render a <main> tag', () => {
+  it('should render a <div> tag', () => {
     const { container } = renderComponent();
-    expect(container.querySelector('main')).not.toBeNull();
+    expect(container.querySelector('div')).not.toBeNull();
   });
 
   it('should have render children', () => {
     const { container } = renderComponent();
     // @ts-ignore
-    expect(container.querySelector('main').children).toHaveLength(1);
+    expect(container.querySelector('[data-test="child"]')).not.toBeNull();
   });
 });
