@@ -14,6 +14,17 @@ import StyledThemeProvider from '../../../../containers/StyledThemeProvider';
  */
 import BaseLayout from '../BaseLayout';
 
+jest.mock('next/router', () => ({
+  useRouter() {
+    return {
+      route: '/',
+      pathname: '',
+      query: '',
+      asPath: '',
+    };
+  },
+}));
+
 const children = <span data-test="child">Test</span>;
 const renderComponent = (props = {}) =>
   render(

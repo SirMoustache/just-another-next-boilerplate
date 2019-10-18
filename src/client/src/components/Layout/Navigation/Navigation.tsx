@@ -2,7 +2,11 @@
  * Absolute imports
  */
 import React from 'react';
-import Link from 'next/link';
+
+/**
+ * Components
+ */
+import { ActiveLink } from '../../UI/Link';
 
 /**
  * Styles
@@ -12,15 +16,15 @@ import { Root, NavigationLink } from './styles';
 const Navigation = () => {
   return (
     <Root>
-      <Link href="/" passHref>
+      <ActiveLink href="/" passHref>
         <NavigationLink>Home</NavigationLink>
-      </Link>
-      <Link href="/about" passHref>
+      </ActiveLink>
+      <ActiveLink href="/about" passHref>
         <NavigationLink>About</NavigationLink>
-      </Link>
-      <Link href="/contact" passHref>
+      </ActiveLink>
+      <ActiveLink href="/contact" passHref>
         <NavigationLink>Contact</NavigationLink>
-      </Link>
+      </ActiveLink>
     </Root>
   );
 };

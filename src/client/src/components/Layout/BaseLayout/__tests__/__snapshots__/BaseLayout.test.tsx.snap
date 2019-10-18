@@ -24,19 +24,19 @@ exports[`<BaseLayout /> should match snapshot 1`] = `
           class="sc-bdVaJa bmJbVs"
         >
           <a
-            class="sc-bwzfXH eHtOgw"
+            class="sc-bwzfXH gEkrbA"
             href="/"
           >
             Home
           </a>
           <a
-            class="sc-bwzfXH eHtOgw"
+            class="sc-bwzfXH gEkrbA"
             href="/about"
           >
             About
           </a>
           <a
-            class="sc-bwzfXH eHtOgw"
+            class="sc-bwzfXH gEkrbA"
             href="/contact"
           >
             Contact
