@@ -9,6 +9,7 @@ import Head from 'next/head';
  */
 import BaseLayout from '../../components/Layout/BaseLayout';
 import FeaturedProducts from '../../components/FeaturedProducts';
+import HomeHero from '../../components/HomeHero';
 
 /**
  * Styles
@@ -21,7 +22,7 @@ const NotFoundView = () => {
       <Head>
         <title>Home Page</title>
       </Head>
-      <h1>Home Page...</h1>
+      <HomeHero />
       <FeaturedProducts />
     </BaseLayout>
   );

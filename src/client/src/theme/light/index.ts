@@ -42,6 +42,7 @@ const theme: DefaultTheme = {
   },
   typography: {
     fontFamily: "'Roboto','Helvetica','Arial',sans-serif",
+    lineHeight: 1.4,
     sizes: {
       xs: '',
       sm: '',

@@ -21,7 +21,7 @@ export const NavigationLink = styled.a<NavigationLinkProps>`
   padding: ${({ theme }) => `${theme.gutter}px ${theme.gutter * 2}px`};
   color: ${({ theme, active }) =>
     active ? 'red' : theme.pallete.textSecondary.main};
-  font-size: 18px;
+  font-size: 22px;
   text-decoration: none;
   display: block;
   cursor: pointer;

@@ -23,6 +23,7 @@ const GlobalStyles = createGlobalStyle`
     color: ${({ theme }) => theme.pallete.textPrimary.main};
     background-color: ${({ theme }) => theme.pallete.bg.main};
     font-size: ${({ theme }) => theme.typography.sizes.default};
+    line-height: ${({ theme }) => theme.typography.lineHeight};;
   }
 
   #__next {

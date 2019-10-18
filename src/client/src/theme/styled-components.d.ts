@@ -27,6 +27,7 @@ interface Shadow {
 interface Typography {
   typography: {
     fontFamily: string;
+    lineHeight: number;
     sizes: {
       xs: string;
       sm: string;
