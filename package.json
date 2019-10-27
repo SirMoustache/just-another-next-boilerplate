@@ -6,7 +6,12 @@
   "scripts": {
     "test": "npm run test:client",
     "test:client": "cd src/client && npm test",
-    "install:all": "cd src/client && npm install"
+    "start:client": "cd src/client && npm run dev",
+    "start:server": "cd src/server && npm start",
+    "start": "npm run start:client & npm start:server",
+    "install:client": "cd src/client && npm ci",
+    "install:server": "cd src/server && npm ci",
+    "install:all": "npm run install:client"
   },
   "repository": {
     "type": "git",
