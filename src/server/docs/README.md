@@ -27,7 +27,7 @@ services:
     environment:
       POSTGRES_PASSWORD: postgres
       POSTGRES_USER: postgres
-      POSTGRES_DB: just-another-db
+      POSTGRES_DB: just_another_db
 volumes: 
   my_dbdata: {
     external: true
@@ -46,7 +46,7 @@ env_file:
 ```
 POSTGRES_PASSWORD=postgres
 POSTGRES_USER=postgres
-POSTGRES_DB=just-another-db
+POSTGRES_DB=just_another_db
 PGADMIN_DEFAULT_EMAIL=admin
 PGADMIN_DEFAULT_PASSWORD=12345
 ```

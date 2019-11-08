@@ -1,50 +1,91 @@
 /**
  * Absolute imports
  */
-import { ApolloServer } from 'apollo-server';
+import express from 'express';
+import cors from 'cors';
+import cookieParser from 'cookie-parser';
+import { ApolloServer } from 'apollo-server-express';
 import { createConnection } from 'typeorm';
 import { buildSchema } from 'type-graphql';
+import { verify } from 'jsonwebtoken';
 
 /**
  * Apollo configs
  */
 import typeDefs from './schema';
-import resolvers, { UserResolver } from './resolvers';
+import { UserResolver } from './resolvers/UserResolver';
 
 /**
  * Entities
  */
 import { User } from './entities/User';
 
+/**
+ * Types
+ */
 import { ServerContext } from './context';
 
-// (async () => {
-//   const serverWithAutoSchema = new ApolloServer({
-//     schema: await buildSchema({
-//       resolvers: [UserResolver],
-//     }),
-//     context: ({ req, res }): ServerContext => ({ req, res }),
-//   });
-// })();
+/**
+ * Utils
+ */
+import { createRefreshToken, createAccessToken } from './utils/auth';
+import { sendRefreshToken } from './utils/sendRefreshToken';
 
-// const server = new ApolloServer({ resolvers, typeDefs });
+const PORT = process.env.PORT || 4000;
 
-// server.listen().then(({ url }) => console.log(`Server ready at ${url}. `));
+(async () => {
+  const app = express();
+  app.use(
+    cors({
+      origin: 'http://localhost:3000',
+      credentials: true,
+    }),
+  );
+  app.use(cookieParser());
+  app.get('/', (_req, res) => res.send('hello'));
+  app.post('/refresh_token', async (req, res) => {
+    const token = req.cookies.jid;
+    if (!token) {
+      return res.send({ ok: false, accessToken: '' });
+    }
 
-createConnection()
-  .then(async connection => {
-    console.log('Inserting a new user into the database...');
-    const user = new User();
-    user.email = 'Bob';
-    user.password = '12345';
+    let payload: any = null;
+    try {
+      payload = verify(token, process.env.REFRESH_TOKEN_SECRET!);
+    } catch (err) {
+      console.log(err);
+      return res.send({ ok: false, accessToken: '' });
+    }
 
-    await connection.manager.save(user);
-    console.log('Saved a new user with id: ' + user.id);
+    // token is valid and
+    // we can send back an access token
+    const user = await User.findOne({ id: payload.userId });
 
-    console.log('Loading users from the database...');
-    const users = await connection.manager.find(User);
-    console.log('Loaded users: ', users);
+    if (!user) {
+      return res.send({ ok: false, accessToken: '' });
+    }
 
-    console.log('Here you can setup and run express/koa/any other framework.');
-  })
-  .catch(error => console.log(error));
+    if (user.tokenVersion !== payload.tokenVersion) {
+      return res.send({ ok: false, accessToken: '' });
+    }
+
+    sendRefreshToken(res, createRefreshToken(user));
+
+    return res.send({ ok: true, accessToken: createAccessToken(user) });
+  });
+
+  await createConnection();
+
+  const apolloServer = new ApolloServer({
+    schema: await buildSchema({
+      resolvers: [UserResolver],
+    }),
+    context: ({ req, res }) => ({ req, res }),
+  });
+
+  apolloServer.applyMiddleware({ app, cors: false });
+
+  app.listen(PORT, () => {
+    console.log(`express server started on  http://localhost:${PORT}`);
+  });
+})();

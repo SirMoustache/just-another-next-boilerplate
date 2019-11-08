@@ -1,0 +1,115 @@
+import {
+  Resolver,
+  Query,
+  Mutation,
+  Arg,
+  ObjectType,
+  Field,
+  Ctx,
+  UseMiddleware,
+  Int,
+} from 'type-graphql';
+import { hash, compare } from 'bcryptjs';
+import { getConnection } from 'typeorm';
+
+/**
+ * Entities
+ */
+import { User } from '../entities/User';
+
+/**
+ * Types
+ */
+import { ServerContext } from '../context';
+
+/**
+ * Utils
+ */
+import { sendRefreshToken } from '../utils/sendRefreshToken';
+import { createAccessToken, createRefreshToken } from '../utils/auth';
+
+@ObjectType()
+export class LoginResponse {
+  @Field()
+  accessToken!: string;
+
+  @Field(() => User)
+  user!: User;
+}
+
+@Resolver()
+export class UserResolver {
+  @Query(() => String)
+  test() {
+    return 'test!';
+  }
+
+  @Query(() => [User])
+  users() {
+    return User.find();
+  }
+
+  @Mutation(() => Boolean)
+  async logout(@Ctx() { res }: ServerContext) {
+    sendRefreshToken(res, '');
+
+    return true;
+  }
+
+  @Mutation(() => Boolean)
+  async revokeRefreshTokensForUser(@Arg('userId', () => Int) userId: number) {
+    await getConnection()
+      .getRepository(User)
+      .increment({ id: userId }, 'tokenVersion', 1);
+
+    return true;
+  }
+
+  @Mutation(() => LoginResponse)
+  async login(
+    @Arg('email') email: string,
+    @Arg('password') password: string,
+    @Ctx() { res }: ServerContext,
+  ): Promise<LoginResponse> {
+    const user = await User.findOne({ where: { email } });
+
+    if (!user) {
+      throw new Error('Сould not find user');
+    }
+
+    const valid = await compare(password, user.password);
+
+    if (!valid) {
+      throw new Error('Wrong login or password');
+    }
+
+    // login successful
+
+    sendRefreshToken(res, createRefreshToken(user));
+
+    return {
+      accessToken: createAccessToken(user),
+      user,
+    };
+  }
+
+  @Mutation(() => Boolean)
+  async register(
+    @Arg('email') email: string,
+    @Arg('password') password: string,
+  ) {
+    const hashedPassword = await hash(password, 12);
+
+    try {
+      await User.insert({
+        email,
+        password: hashedPassword,
+      });
+    } catch (err) {
+      console.log(err);
+      return false;
+    }
+
+    return true;
+  }
+}

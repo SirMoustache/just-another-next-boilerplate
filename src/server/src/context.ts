@@ -1,7 +1,8 @@
 // import { ExpressContext } from 'apollo-server';
+import { Request, Response } from 'express';
 
 export interface ServerContext {
-  req: any;
-  res: any;
+  req: Request;
+  res: Response;
   payload?: { userId: string };
 }
