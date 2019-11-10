@@ -11,7 +11,7 @@
     "start": "npm run start:client & npm start:server",
     "install:client": "cd src/client && npm ci",
     "install:server": "cd src/server && npm ci",
-    "install:all": "npm run install:client"
+    "install:all": "npm run install:client && install:server"
   },
   "repository": {
     "type": "git",
