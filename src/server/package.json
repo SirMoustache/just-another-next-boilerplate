@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "ts-node ./src/index.ts",
+    "start": "npm run start:docker & npm run start:server",
+    "start:server": "ts-node ./src/index.ts",
+    "start:docker": "docker-compose up -d",
     "typeorm": "typeorm"
   },
   "keywords": [],
