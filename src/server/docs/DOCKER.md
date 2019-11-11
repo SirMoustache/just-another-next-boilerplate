@@ -1,14 +1,16 @@
-# docker commands
+# docker notes
 
-## `docker container ls [OPTIONS]`
+## Docker commands
+
+### `docker container ls [OPTIONS]`
 
 List containers
 
-## `docker container kill [OPTIONS] CONTAINER [CONTAINER...]`
+### `docker container kill [OPTIONS] CONTAINER [CONTAINER...]`
 
 Kill one or more running containers
 
-## `docker logs [OPTIONS] CONTAINER`
+### `docker logs [OPTIONS] CONTAINER`
 
 Fetch the logs of a container <br/>
 Example: `docker logs -f my_postgres`
@@ -17,7 +19,7 @@ Example: `docker logs -f my_postgres`
 | ------------- | ----------------- |
 | --follow , -f | Follow log output |
 
-## `docker-compose up [options] [--scale SERVICE=NUM...] [SERVICE...]`
+### `docker-compose up [options] [--scale SERVICE=NUM...] [SERVICE...]`
 
 Builds, (re)creates, starts, and attaches to containers for a service.
 
