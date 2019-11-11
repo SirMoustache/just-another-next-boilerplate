@@ -7,7 +7,6 @@ import cookieParser from 'cookie-parser';
 import { ApolloServer } from 'apollo-server-express';
 import { createConnection } from 'typeorm';
 import { buildSchema } from 'type-graphql';
-import { verify } from 'jsonwebtoken';
 
 /**
  * Apollo configs

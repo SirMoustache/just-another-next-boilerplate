@@ -8,10 +8,10 @@
     "test:client": "cd src/client && npm test",
     "start:client": "cd src/client && npm run dev",
     "start:server": "cd src/server && npm start",
-    "start": "npm run start:client & npm start:server",
+    "start": "concurrently \"npm:start:server\" \"npm:start:client\"",
     "install:client": "cd src/client && npm install",
     "install:server": "cd src/server && npm install",
-    "install:all": "npm run install:server && npm run install:client"
+    "install:all": "npm install && npm run install:server && npm run install:client"
   },
   "repository": {
     "type": "git",
@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/SirMoustache/just-another-next-boilerplate/issues"
   },
-  "homepage": "https://github.com/SirMoustache/just-another-next-boilerplate#readme"
+  "homepage": "https://github.com/SirMoustache/just-another-next-boilerplate#readme",
+  "dependencies": {
+    "concurrently": "^5.0.0"
+  }
 }

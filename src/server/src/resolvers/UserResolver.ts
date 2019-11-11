@@ -23,10 +23,18 @@ import { User } from '../entities/User';
 import { ServerContext } from '../context';
 
 /**
+ * Middlewares
+ */
+import { isAuth } from '../middlewares/auth';
+
+/**
  * Utils
  */
-import { sendRefreshToken } from '../utils/sendRefreshToken';
-import { createAccessToken, createRefreshToken } from '../utils/auth';
+import {
+  createAccessToken,
+  createRefreshToken,
+  setRefreshTokenToCookie,
+} from '../utils/token';
 
 @ObjectType()
 export class LoginResponse {
@@ -40,8 +48,14 @@ export class LoginResponse {
 @Resolver()
 export class UserResolver {
   @Query(() => String)
-  test() {
-    return 'test!';
+  ping() {
+    return 'pong!';
+  }
+
+  @Query(() => String)
+  @UseMiddleware(isAuth)
+  secretQuery(@Ctx() { payload }: ServerContext) {
+    return `secretQuery ${payload!.userId}`;
   }
 
   @Query(() => [User])
@@ -51,7 +65,7 @@ export class UserResolver {
 
   @Mutation(() => Boolean)
   async logout(@Ctx() { res }: ServerContext) {
-    sendRefreshToken(res, '');
+    setRefreshTokenToCookie(res, '');
 
     return true;
   }
@@ -85,7 +99,7 @@ export class UserResolver {
 
     // login successful
 
-    sendRefreshToken(res, createRefreshToken(user));
+    setRefreshTokenToCookie(res, createRefreshToken(user));
 
     return {
       accessToken: createAccessToken(user),

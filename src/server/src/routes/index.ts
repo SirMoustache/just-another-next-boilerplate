@@ -2,7 +2,6 @@
  * Absolute imports
  */
 import express from 'express';
-import { verify } from 'jsonwebtoken';
 
 /**
  * Entities
@@ -12,8 +11,12 @@ import { User } from '../entities/User';
 /**
  * Utils
  */
-import { createRefreshToken, createAccessToken } from '../utils/auth';
-import { sendRefreshToken } from '../utils/sendRefreshToken';
+import {
+  createRefreshToken,
+  createAccessToken,
+  setRefreshTokenToCookie,
+  verifyRefreshToken,
+} from '../utils/token';
 
 const routes = express.Router();
 
@@ -30,7 +33,7 @@ routes.post('/refresh-token', async (req, res) => {
 
   let payload: any = null;
   try {
-    payload = verify(token, process.env.REFRESH_TOKEN_SECRET!);
+    payload = verifyRefreshToken(token);
   } catch (err) {
     console.log(err);
     return res.send({ ok: false, accessToken: '' });
@@ -48,7 +51,7 @@ routes.post('/refresh-token', async (req, res) => {
     return res.send({ ok: false, accessToken: '' });
   }
 
-  sendRefreshToken(res, createRefreshToken(user));
+  setRefreshTokenToCookie(res, createRefreshToken(user));
 
   return res.send({ ok: true, accessToken: createAccessToken(user) });
 });
