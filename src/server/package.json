@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npm run start:docker & npm run start:server",
-    "start:server": "ts-node ./src/index.ts",
+    "start:server": "nodemon --exec ts-node ./src/index.ts",
     "start:docker": "docker-compose up -d",
     "typeorm": "typeorm"
   },
@@ -32,6 +32,7 @@
     "@types/cookie-parser": "^1.4.2",
     "@types/jsonwebtoken": "^8.3.5",
     "@types/node": "^12.12.7",
+    "nodemon": "^2.0.1",
     "typescript": "^3.7.2"
   }
 }
