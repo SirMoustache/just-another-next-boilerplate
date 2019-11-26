@@ -3,7 +3,8 @@
     "default": {
       "packages": [
         "package.json",
-        "src/client/package.json"
+        "src/client/package.json",
+        "src/server/package.json"
       ]
     }
   }
