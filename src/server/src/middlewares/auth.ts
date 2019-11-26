@@ -19,7 +19,7 @@ export const isAuth: MiddlewareFn<ServerContext> = ({ context }, next) => {
   try {
     const token = authorizationHeader.split(' ')[1];
     const payload = verifyAccessToken(token);
-    context.payload = payload as any;
+    context.payload = payload as ServerContext['payload'];
   } catch (err) {
     console.log(err);
     throw new Error('Not authenticated');

@@ -12,7 +12,12 @@ import { buildSchema } from 'type-graphql';
  * Apollo configs
  */
 import typeDefs from './schema';
+
+/**
+ * Resolvers
+ */
 import { UserResolver } from './resolvers/UserResolver';
+import { AuthResolver } from './resolvers/AuthResolver';
 
 /**
  * Routes
@@ -37,7 +42,7 @@ const CLIENT_ORIGIN = 'http://localhost:3000';
 
   const apolloServer = new ApolloServer({
     schema: await buildSchema({
-      resolvers: [UserResolver],
+      resolvers: [UserResolver, AuthResolver],
     }),
     context: ({ req, res }) => ({ req, res }),
   });

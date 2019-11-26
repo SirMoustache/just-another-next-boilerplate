@@ -36,15 +36,6 @@ import {
   setRefreshTokenToCookie,
 } from '../utils/token';
 
-@ObjectType()
-export class LoginResponse {
-  @Field()
-  accessToken!: string;
-
-  @Field(() => User)
-  user!: User;
-}
-
 @Resolver()
 export class UserResolver {
   @Query(() => String)
@@ -64,13 +55,6 @@ export class UserResolver {
   }
 
   @Mutation(() => Boolean)
-  async logout(@Ctx() { res }: ServerContext) {
-    setRefreshTokenToCookie(res, '');
-
-    return true;
-  }
-
-  @Mutation(() => Boolean)
   async revokeRefreshTokensForUser(@Arg('userId', () => Int) userId: number) {
     await getConnection()
       .getRepository(User)
@@ -79,40 +63,18 @@ export class UserResolver {
     return true;
   }
 
-  @Mutation(() => LoginResponse)
-  async login(
-    @Arg('email') email: string,
-    @Arg('password') password: string,
-    @Ctx() { res }: ServerContext,
-  ): Promise<LoginResponse> {
-    const user = await User.findOne({ where: { email } });
-
-    if (!user) {
-      throw new Error('Сould not find user');
-    }
-
-    const valid = await compare(password, user.password);
-
-    if (!valid) {
-      throw new Error('Wrong login or password');
-    }
-
-    // login successful
-
-    setRefreshTokenToCookie(res, createRefreshToken(user));
-
-    return {
-      accessToken: createAccessToken(user),
-      user,
-    };
-  }
-
   @Mutation(() => Boolean)
-  async register(
+  async createUser(
     @Arg('email') email: string,
     @Arg('password') password: string,
   ) {
     const hashedPassword = await hash(password, 12);
+
+    const user = await User.findOne({ where: { email } });
+
+    if (user) {
+      throw new Error('This email is already registered');
+    }
 
     try {
       await User.insert({
