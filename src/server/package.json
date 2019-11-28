@@ -7,6 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npm run start:docker & npm run start:server",
     "start:server": "nodemon --exec ts-node ./src/index.ts",
+    "start:debug": "nodemon --config ./nodemon.config.json",
     "start:docker": "docker-compose up -d",
     "typeorm": "typeorm"
   },
