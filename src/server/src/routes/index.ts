@@ -18,6 +18,8 @@ import {
   verifyRefreshToken,
 } from '../utils/token';
 
+import { ServerContext } from '../context';
+
 const routes = express.Router();
 
 routes.get('/', (req, res) => {
@@ -31,11 +33,15 @@ routes.post('/refresh-token', async (req, res) => {
     return res.send({ ok: false, accessToken: '' });
   }
 
-  let payload: any = null;
+  let payload: ServerContext['payload'];
   try {
     payload = verifyRefreshToken(token);
   } catch (err) {
     console.log(err);
+    return res.send({ ok: false, accessToken: '' });
+  }
+
+  if (!payload) {
     return res.send({ ok: false, accessToken: '' });
   }
 

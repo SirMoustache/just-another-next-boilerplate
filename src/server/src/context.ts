@@ -4,5 +4,5 @@ import { Request, Response } from 'express';
 export interface ServerContext {
   req: Request;
   res: Response;
-  payload?: { userId: string };
+  payload?: { userId: number; tokenVersion: number };
 }

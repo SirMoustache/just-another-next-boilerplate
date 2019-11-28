@@ -15,7 +15,7 @@ import { getConnection } from 'typeorm';
 /**
  * Entities
  */
-import { User } from '../entities/User';
+import { User, UserRole } from '../entities/User';
 
 /**
  * Types
@@ -26,6 +26,7 @@ import { ServerContext } from '../context';
  * Middlewares
  */
 import { isAuth } from '../middlewares/auth';
+import { isAdmin } from '../middlewares/role';
 
 /**
  * Utils
@@ -35,6 +36,11 @@ import {
   createRefreshToken,
   setRefreshTokenToCookie,
 } from '../utils/token';
+import { validate, isEmail } from '../utils/validation';
+
+/**
+ *
+ */
 
 @Resolver()
 export class UserResolver {
@@ -47,6 +53,13 @@ export class UserResolver {
   @UseMiddleware(isAuth)
   secretQuery(@Ctx() { payload }: ServerContext) {
     return `secretQuery ${payload!.userId}`;
+  }
+
+  @Query(() => String)
+  @UseMiddleware(isAuth)
+  @UseMiddleware(isAdmin)
+  secretAdminQuery(@Ctx() { payload }: ServerContext) {
+    return `secretAdminQuery ${payload!.userId}`;
   }
 
   @Query(() => [User])
@@ -76,10 +89,13 @@ export class UserResolver {
       throw new Error('This email is already registered');
     }
 
+    validate(isEmail, 'Invalid email value', email);
+
     try {
       await User.insert({
         email,
         password: hashedPassword,
+        roles: [UserRole.user],
       });
     } catch (err) {
       console.log(err);

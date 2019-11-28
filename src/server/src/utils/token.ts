@@ -10,6 +10,11 @@ import 'dotenv/config';
  */
 import { User } from '../entities/User';
 
+/**
+ *
+ */
+import { ServerContext } from '../context';
+
 const ACCESS_TOKEN_SECRET = process.env.ACCESS_TOKEN_SECRET;
 const REFRESH_TOKEN_SECRET = process.env.REFRESH_TOKEN_SECRET;
 
@@ -42,7 +47,7 @@ export const verifyAccessToken = (token: string) => {
     throw new TypeError('ACCESS_TOKEN_SECRET is undefined');
   }
 
-  return verify(token, ACCESS_TOKEN_SECRET!);
+  return verify(token, ACCESS_TOKEN_SECRET!) as ServerContext['payload'];
 };
 
 export const verifyRefreshToken = (token: string) => {
@@ -50,7 +55,7 @@ export const verifyRefreshToken = (token: string) => {
     throw new TypeError('REFRESH_TOKEN_SECRET is undefined');
   }
 
-  return verify(token, REFRESH_TOKEN_SECRET!);
+  return verify(token, REFRESH_TOKEN_SECRET!) as ServerContext['payload'];
 };
 
 export const setRefreshTokenToCookie = (res: Response, token: string) => {
