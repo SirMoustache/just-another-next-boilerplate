@@ -12,7 +12,7 @@
     "install:client": "cd src/client && npm install",
     "install:server": "cd src/server && npm install",
     "install:all": "npm install && npm run install:server && npm run install:client",
-    "postinstall": "npm run install:all"
+    "postinstall": "npm run install:client && npm run install:install:server"
   },
   "repository": {
     "type": "git",
