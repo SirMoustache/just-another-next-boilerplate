@@ -6,13 +6,15 @@
   "scripts": {
     "test": "npm run test:client",
     "test:client": "cd src/client && npm test",
+    "build:client": "cd src/client && npm run build",
+    "build": "npm run build:client",
     "start:client": "cd src/client && npm run dev",
     "start:server": "cd src/server && npm start",
     "start": "concurrently \"npm:start:server\" \"npm:start:client\"",
     "install:client": "cd src/client && npm install",
     "install:server": "cd src/server && npm install",
     "install:all": "npm install && npm run install:server && npm run install:client",
-    "postinstall": "npm run install:client && npm run install:server"
+    "postinstall": "npm run install:client && npm run install:server",
   },
   "repository": {
     "type": "git",
