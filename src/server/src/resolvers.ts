@@ -9,7 +9,12 @@ import {
   UseMiddleware,
   Int,
 } from 'type-graphql';
+import { getConnection } from 'typeorm';
 import { hash, compare } from 'bcryptjs';
+
+/**
+ * Utils
+ */
 
 /**
  * Entities

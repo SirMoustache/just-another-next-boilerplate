@@ -22,6 +22,7 @@ import {
   createRefreshToken,
   setRefreshTokenToCookie,
 } from '../utils/token';
+import { validate, isEmail } from '../utils/validation';
 
 @ObjectType()
 export class LoginResponse {
@@ -53,9 +54,9 @@ export class AuthResolver {
       throw new Error('Сould not find user');
     }
 
-    const valid = await compare(password, user.password);
+    const isValidPassword = await compare(password, user.password);
 
-    if (!valid) {
+    if (!isValidPassword) {
       throw new Error('Wrong login or password');
     }
 

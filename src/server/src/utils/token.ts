@@ -61,6 +61,6 @@ export const verifyRefreshToken = (token: string) => {
 export const setRefreshTokenToCookie = (res: Response, token: string) => {
   res.cookie('jid', token, {
     httpOnly: true,
-    path: '/refresh-token',
+    //path: '/refresh-token',
   });
 };

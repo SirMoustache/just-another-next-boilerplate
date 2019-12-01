@@ -4,17 +4,22 @@
 import React, { useState } from 'react';
 
 /**
+ * Services
+ */
+import { setAccessToken } from '../../services/tokenService';
+
+/**
  * GraphQL
  */
-import { useSignUpMutation } from '../../generated';
+import { useSignInMutation } from '../../generated';
 
-const SignUpForm = () => {
+const SignInForm = () => {
   const [values, setValues] = useState({
     email: '',
     password: '',
   });
 
-  const [signUp, { error }] = useSignUpMutation();
+  const [signIn, { error }] = useSignInMutation();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { target } = event;
@@ -24,11 +29,17 @@ const SignUpForm = () => {
     }));
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLElement>) => {
     event.preventDefault();
-    signUp({
+    const responce = await signIn({
       variables: values,
     });
+
+    if (!responce || !responce.data) {
+      return;
+    }
+
+    setAccessToken(responce.data.login.accessToken);
   };
 
   return (
@@ -45,10 +56,12 @@ const SignUpForm = () => {
         onChange={handleChange}
         value={values.password}
       />
-      <button type="submit">Sign Up</button>
+
+      <button type="submit">Sign In</button>
+
       {error && <div>Error: {JSON.stringify(error)}</div>}
     </form>
   );
 };
 
-export default SignUpForm;
+export default SignInForm;
