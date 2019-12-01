@@ -1,3 +1,6 @@
+/**
+ * Absolute imports
+ */
 import { Resolver, Mutation, Arg, ObjectType, Field, Ctx } from 'type-graphql';
 import { compare } from 'bcryptjs';
 
