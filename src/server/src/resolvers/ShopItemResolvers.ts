@@ -2,21 +2,41 @@
  * Absolute imports
  */
 import {
+  Int,
   Resolver,
   Mutation,
   Arg,
-  ObjectType,
-  Field,
-  Ctx,
-  Query,
   Args,
+  Field,
+  Query,
+  Ctx,
+  ObjectType,
   InputType,
+  ArgsType,
 } from 'type-graphql';
 
 /**
  * Entities
  */
 import { ShopItem } from '../entities/ShopItem';
+
+@InputType()
+class ShopItemWhere {
+  @Field({ nullable: true })
+  id?: string;
+}
+
+@ArgsType()
+class ShopItemArgs {
+  @Field(() => Int, { nullable: true })
+  skip?: number;
+
+  @Field(() => Int, { nullable: true })
+  take?: number;
+
+  @Field({ nullable: true })
+  where?: ShopItemWhere;
+}
 
 @InputType()
 export class CreateShopItemRequest {
@@ -45,8 +65,12 @@ export class CreateShopItemRequest {
 @Resolver()
 export class ShopItemResolvers {
   @Query(() => [ShopItem])
-  shopItems() {
-    return ShopItem.find();
+  shopItems(@Args() { skip, take, where }: ShopItemArgs) {
+    return ShopItem.find({
+      skip,
+      take,
+      where,
+    });
   }
 
   @Mutation(() => Boolean)

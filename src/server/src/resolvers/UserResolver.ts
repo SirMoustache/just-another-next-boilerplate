@@ -3,13 +3,14 @@ import {
   Query,
   Mutation,
   Arg,
-  ObjectType,
+  Args,
+  ArgsType,
   Field,
   Ctx,
   UseMiddleware,
   Int,
 } from 'type-graphql';
-import { hash, compare } from 'bcryptjs';
+import { hash } from 'bcryptjs';
 import { getConnection } from 'typeorm';
 
 /**
@@ -42,6 +43,15 @@ import { validate, isEmail } from '../utils/validation';
  *
  */
 
+@ArgsType()
+class UsersArgs {
+  @Field(type => Int, { nullable: true })
+  skip?: number;
+
+  @Field(type => Int, { nullable: true })
+  take?: number;
+}
+
 @Resolver()
 export class UserResolver {
   @Query(() => String)
@@ -63,8 +73,8 @@ export class UserResolver {
   }
 
   @Query(() => [User])
-  users() {
-    return User.find();
+  users(@Args() { take, skip }: UsersArgs) {
+    return User.find({ take, skip });
   }
 
   @Mutation(() => Boolean)
