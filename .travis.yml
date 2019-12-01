@@ -2,4 +2,4 @@ language: node_js
 node_js:
   - v10
 install:
-  npm run install:all
+  npm run install
