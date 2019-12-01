@@ -1,14 +1,14 @@
 /**
  * Absolute imports
  */
-import styled, { css } from 'styled-components';
+import styled, { css } from 'styled-components/macro';
 
 /**
  * Utils
  */
-import { isUndefined, isString } from '../../utils/valueUtils';
+import { isUndefined, isString } from '../../../utils/valueUtils';
 
-export type Breakpoint = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+export type Breakpoint = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
 
 export type PushBreakpoint =
   | 'pushXs'
@@ -61,21 +61,21 @@ export const columnAutoWithMixin = css<ColumnProps>`
   flex-basis: auto;
 `;
 
-export const getWidth = (size: number) => `
+export const getWidthStyles = (size: number) => `
   max-width: ${(size / 12) * 100}%;
   flex-basis: ${(size / 12) * 100}%;
 `;
 
-export const getOffset = (size: number) => `
+export const getOffsetStyles = (size: number) => `
   margin-left: ${(size / 12) * 100}%;
 `;
 
-export const getOrder = (order: number) => `
+export const getOrderStyles = (order: number) => `
   order: ${order};
 `;
 
 export const columnWidthMixin = css<ColumnProps>`
-  ${({ xs }) => typeof xs === 'number' && getWidth(xs)};
+  ${({ xs }) => typeof xs === 'number' && getWidthStyles(xs)};
 `;
 
 export const Column = styled.div<ColumnProps>`
@@ -85,64 +85,64 @@ export const Column = styled.div<ColumnProps>`
     !isUndefined(xs)
       ? isString(xs)
         ? columnAutoWithMixin
-        : getWidth(xs)
+        : getWidthStyles(xs)
       : null}
 
-  ${({ pushXs }) => !isUndefined(pushXs) && getOffset(pushXs)}
+  ${({ pushXs }) => !isUndefined(pushXs) && getOffsetStyles(pushXs)}
 
-  ${({ orderXs }) => !isUndefined(orderXs) && getOrder(orderXs)}
+  ${({ orderXs }) => !isUndefined(orderXs) && getOrderStyles(orderXs)}
 
-  @media (min-width: ${({ theme }) => theme.breakpoints.sm}px) {
+  @media (min-width: ${({ theme }) => theme.breakpoints.sm}) {
     ${({ sm }) =>
       !isUndefined(sm)
         ? isString(sm)
           ? columnAutoWithMixin
-          : getWidth(sm)
+          : getWidthStyles(sm)
         : null}
 
-    ${({ pushSm }) => !isUndefined(pushSm) && getOffset(pushSm)}
+    ${({ pushSm }) => !isUndefined(pushSm) && getOffsetStyles(pushSm)}
 
-    ${({ orderSm }) => !isUndefined(orderSm) && getOrder(orderSm)}
+    ${({ orderSm }) => !isUndefined(orderSm) && getOrderStyles(orderSm)}
   }
 
-  @media (min-width: ${({ theme }) => theme.breakpoints.md}px) {
+  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
     ${({ md }) =>
       !isUndefined(md)
         ? isString(md)
           ? columnAutoWithMixin
-          : getWidth(md)
+          : getWidthStyles(md)
         : null}
 
-    ${({ pushMd }) => !isUndefined(pushMd) && getOffset(pushMd)}
+    ${({ pushMd }) => !isUndefined(pushMd) && getOffsetStyles(pushMd)}
 
-    ${({ orderMd }) => !isUndefined(orderMd) && getOrder(orderMd)}
+    ${({ orderMd }) => !isUndefined(orderMd) && getOrderStyles(orderMd)}
   }
 
-  @media (min-width: ${({ theme }) => theme.breakpoints.lg}px) {
+  @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
     ${({ lg }) =>
       !isUndefined(lg)
         ? isString(lg)
           ? columnAutoWithMixin
-          : getWidth(lg)
+          : getWidthStyles(lg)
         : null}
 
-    ${({ pushLg }) => !isUndefined(pushLg) && getOffset(pushLg)}
+    ${({ pushLg }) => !isUndefined(pushLg) && getOffsetStyles(pushLg)}
 
-    ${({ orderLg }) => !isUndefined(orderLg) && getOrder(orderLg)}
+    ${({ orderLg }) => !isUndefined(orderLg) && getOrderStyles(orderLg)}
   }
 
-  @media (min-width: ${({ theme }) => theme.breakpoints.xl}px) {
+  @media (min-width: ${({ theme }) => theme.breakpoints.xl}) {
     ${({ xl }) =>
       !isUndefined(xl)
         ? isString(xl)
           ? columnAutoWithMixin
-          : getWidth(xl)
+          : getWidthStyles(xl)
         : null}
 
 
-    ${({ pushXl }) => !isUndefined(pushXl) && getOffset(pushXl)}
+    ${({ pushXl }) => !isUndefined(pushXl) && getOffsetStyles(pushXl)}
 
-    ${({ orderXl }) => !isUndefined(orderXl) && getOrder(orderXl)}
+    ${({ orderXl }) => !isUndefined(orderXl) && getOrderStyles(orderXl)}
   }
 `;
 
@@ -156,7 +156,7 @@ export const Row = styled.div<RowProps>`
 
   ${({ align }) => align && `align-items: ${align};`}
 
-  ${({ wrap }) => wrap && `flex-wrap: ${wrap};`}
+  ${({ wrap = 'wrap' }) => wrap && `flex-wrap: ${wrap};`}
 
   & > ${Column} {
     padding: ${({ gutter = 1, theme }) => `${theme.gutter * gutter}px`};
