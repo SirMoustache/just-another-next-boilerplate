@@ -18,6 +18,7 @@ import typeDefs from './schema';
  */
 import { UserResolver } from './resolvers/UserResolver';
 import { AuthResolver } from './resolvers/AuthResolver';
+import { ShopItemResolvers } from './resolvers/ShopItemResolvers';
 
 /**
  * Routes
@@ -42,7 +43,7 @@ const CLIENT_ORIGIN = 'http://localhost:3000';
 
   const apolloServer = new ApolloServer({
     schema: await buildSchema({
-      resolvers: [UserResolver, AuthResolver],
+      resolvers: [UserResolver, AuthResolver, ShopItemResolvers],
     }),
     context: ({ req, res }) => ({ req, res }),
   });
