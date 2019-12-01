@@ -7,7 +7,8 @@
     "dev": "next",
     "build": "next build",
     "start": "next start -p $PORT",
-    "test": "jest --config jest.config.js"
+    "test": "jest --config jest.config.js",
+    "gen": "graphql-codegen --config codegen.yml"
   },
   "author": "",
   "license": "ISC",
@@ -28,6 +29,10 @@
     "typescript": "^3.7.2"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "^1.9.1",
+    "@graphql-codegen/typescript": "^1.9.1",
+    "@graphql-codegen/typescript-operations": "^1.9.1",
+    "@graphql-codegen/typescript-react-apollo": "^1.9.1",
     "@testing-library/react": "^9.3.0",
     "@types/jest": "^24.0.19",
     "@typescript-eslint/eslint-plugin": "^2.5.0",
