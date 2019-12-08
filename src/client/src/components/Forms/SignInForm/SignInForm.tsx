@@ -87,7 +87,8 @@ const SignInForm: FC<SignInFormProps> = ({ isLoading, errorMessage }) => {
       }}
       onSubmit={handleSubmit}
       validationSchema={validateSchema}
-      render={(props: FormikProps<SignInRequestData>) => (
+    >
+      {(props: FormikProps<SignInRequestData>) => (
         <form onSubmit={props.handleSubmit}>
           <FormHeader>Sign In</FormHeader>
 
@@ -136,7 +137,7 @@ const SignInForm: FC<SignInFormProps> = ({ isLoading, errorMessage }) => {
           </Link>
         </form>
       )}
-    />
+    </Formik>
   );
 };
 
