@@ -1,7 +1,7 @@
 /**
  * Absolute imports
  */
-import React, { Fragment } from 'react';
+import React, { Fragment, ReactNode } from 'react';
 import Document, {
   DocumentContext,
   Html,
@@ -10,18 +10,23 @@ import Document, {
   NextScript,
 } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
+import { ServerStyleSheets } from '@material-ui/core/styles';
+import { compose } from 'ramda';
 
-// @ts-ignore
 export default class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
     const styledComponentsSheet = new ServerStyleSheet();
+    const materialUISheet = new ServerStyleSheets();
     const originalRenderPage = ctx.renderPage;
+
+    const composeStyles = (app: ReactNode) =>
+      materialUISheet.collect(styledComponentsSheet.collectStyles(app));
 
     try {
       ctx.renderPage = () =>
         originalRenderPage({
           enhanceApp: App => props =>
-            styledComponentsSheet.collectStyles(
+            composeStyles(
               <Fragment>
                 <App {...props} />
               </Fragment>,
@@ -29,10 +34,11 @@ export default class MyDocument extends Document {
         });
 
       const initialProps = await Document.getInitialProps(ctx);
+      initialProps.head;
 
       return {
         ...initialProps,
-        head: <Fragment>{initialProps.head}</Fragment>,
+        head: initialProps.head,
         styles: (
           <Fragment>
             {initialProps.styles}
