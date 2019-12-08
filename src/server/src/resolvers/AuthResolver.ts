@@ -51,7 +51,7 @@ export class AuthResolver {
     const user = await User.findOne({ where: { email } });
 
     if (!user) {
-      throw new Error('Сould not find user');
+      throw new Error('Wrong login or password');
     }
 
     const isValidPassword = await compare(password, user.password);
