@@ -3,16 +3,15 @@
  */
 import styled from 'styled-components';
 
-export const ErrorCode = styled.h1`
-  text-align: center;
-  font-size: 100px;
-  margin: 0 0 16px;
-  font-weight: 700;
-`;
+/**
+ * Components
+ */
+import Surface from '../../components/UI/Surface';
 
-export const ErrorDescription = styled.h2`
-  text-align: center;
-  font-size: 32px;
-  margin: 0 0 16px;
-  font-weight: 400;
+export const FormWrapper = styled(Surface)`
+  margin: ${({ theme }) => `${theme.gutter * 2}px auto`};
+  width: 90%;
+  max-width: 500px;
+  border-radius: 4px;
+  background-color: ${({ theme }) => theme.pallete.bg.dark};
 `;

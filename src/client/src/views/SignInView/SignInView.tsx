@@ -13,7 +13,7 @@ import SignInForm from '../../components/Forms/SignInForm';
 /**
  * Styles
  */
-import {} from './styles';
+import { FormWrapper } from './styles';
 
 const SignInView = () => {
   return (
@@ -21,7 +21,9 @@ const SignInView = () => {
       <Head>
         <title>Sign In</title>
       </Head>
-      <SignInForm />
+      <FormWrapper withPadding>
+        <SignInForm />
+      </FormWrapper>
     </BaseLayout>
   );
 };

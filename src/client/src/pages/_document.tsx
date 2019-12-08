@@ -11,7 +11,6 @@ import Document, {
 } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
 import { ServerStyleSheets } from '@material-ui/core/styles';
-import { compose } from 'ramda';
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
@@ -43,6 +42,7 @@ export default class MyDocument extends Document {
           <Fragment>
             {initialProps.styles}
             {styledComponentsSheet.getStyleElement()}
+            {materialUISheet.getStyleElement()}
           </Fragment>
         ),
       };
