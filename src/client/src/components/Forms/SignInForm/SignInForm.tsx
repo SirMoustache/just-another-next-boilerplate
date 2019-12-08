@@ -45,6 +45,7 @@ import { useSignInMutation } from '../../../generated';
 /**
  * Utils
  */
+import { normalizeServerError } from '../../../utils/apolloUtils';
 import validateSchema from './validate';
 
 export type SignInRequestData = {
@@ -99,7 +100,7 @@ const SignInForm: FC<SignInFormProps> = ({ isLoading, errorMessage }) => {
             label="Email"
             margin="normal"
             variant="filled"
-            disabled={isLoading}
+            disabled={props.isSubmitting}
             //component={FormTextField}
           />
 
@@ -109,13 +110,13 @@ const SignInForm: FC<SignInFormProps> = ({ isLoading, errorMessage }) => {
             margin="normal"
             variant="filled"
             type="password"
-            disabled={isLoading}
+            disabled={props.isSubmitting}
             //component={FormTextField}
           />
 
           {error && (
             <FormError>
-              <strong>Error:</strong> {error.message}
+              <strong>Error:</strong> {normalizeServerError(error.message)}
             </FormError>
           )}
 
@@ -125,7 +126,7 @@ const SignInForm: FC<SignInFormProps> = ({ isLoading, errorMessage }) => {
               // color="primary"
               size="large"
               type="submit"
-              disabled={isLoading}
+              disabled={props.isSubmitting}
             >
               {/* {isLoading && <LoadingOverlay size={24} />} */}
               Sign In
