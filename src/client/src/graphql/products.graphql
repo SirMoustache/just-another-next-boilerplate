@@ -1,0 +1,6 @@
+query products {
+  shopItems {
+    id
+    title
+  }
+}

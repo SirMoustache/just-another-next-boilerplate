@@ -117,6 +117,17 @@ export type PingQuery = (
   & Pick<Query, 'ping'>
 );
 
+export type ProductsQueryVariables = {};
+
+
+export type ProductsQuery = (
+  { __typename?: 'Query' }
+  & { shopItems: Array<(
+    { __typename?: 'ShopItem' }
+    & Pick<ShopItem, 'id' | 'title'>
+  )> }
+);
+
 export type SignUpMutationVariables = {
   email: Scalars['String'],
   password: Scalars['String']
@@ -177,6 +188,39 @@ export function usePingLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOpt
 export type PingQueryHookResult = ReturnType<typeof usePingQuery>;
 export type PingLazyQueryHookResult = ReturnType<typeof usePingLazyQuery>;
 export type PingQueryResult = ApolloReactCommon.QueryResult<PingQuery, PingQueryVariables>;
+export const ProductsDocument = gql`
+    query products {
+  shopItems {
+    id
+    title
+  }
+}
+    `;
+
+/**
+ * __useProductsQuery__
+ *
+ * To run a query within a React component, call `useProductsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useProductsQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useProductsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useProductsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<ProductsQuery, ProductsQueryVariables>) {
+        return ApolloReactHooks.useQuery<ProductsQuery, ProductsQueryVariables>(ProductsDocument, baseOptions);
+      }
+export function useProductsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<ProductsQuery, ProductsQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<ProductsQuery, ProductsQueryVariables>(ProductsDocument, baseOptions);
+        }
+export type ProductsQueryHookResult = ReturnType<typeof useProductsQuery>;
+export type ProductsLazyQueryHookResult = ReturnType<typeof useProductsLazyQuery>;
+export type ProductsQueryResult = ApolloReactCommon.QueryResult<ProductsQuery, ProductsQueryVariables>;
 export const SignUpDocument = gql`
     mutation signUp($email: String!, $password: String!) {
   createUser(email: $email, password: $password)

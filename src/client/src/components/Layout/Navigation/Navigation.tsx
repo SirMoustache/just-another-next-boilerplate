@@ -19,9 +19,15 @@ const Navigation = () => {
       <ActiveLink href="/" passHref>
         <NavigationLink>Home</NavigationLink>
       </ActiveLink>
+
+      <ActiveLink href="/shop" passHref>
+        <NavigationLink>Shop</NavigationLink>
+      </ActiveLink>
+
       <ActiveLink href="/about" passHref>
         <NavigationLink>About</NavigationLink>
       </ActiveLink>
+
       <ActiveLink href="/contact" passHref>
         <NavigationLink>Contact</NavigationLink>
       </ActiveLink>
