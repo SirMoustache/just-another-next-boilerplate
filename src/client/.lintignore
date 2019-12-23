@@ -1,0 +1,11 @@
+
+# Folders
+build
+public
+.next
+node_modules
+src/generated
+src/**/__tests__
+
+# Files
+*.d.ts
