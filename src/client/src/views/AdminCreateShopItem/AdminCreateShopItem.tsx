@@ -8,6 +8,7 @@ import Head from 'next/head';
  * Components
  */
 import BaseLayout from '../../components/Layout/BaseLayout';
+import CreateShopItemFrom from '../../components/Forms/CreateShopItemForm';
 
 /**
  * GraphQL
@@ -24,7 +25,10 @@ const AdminCreateShopItem = () => {
       <Head>
         <title>Admin Create Shop Item</title>
       </Head>
-      <h2>Create Shop Item</h2>
+      <section>
+        <h2>Create Shop Item</h2>
+        <CreateShopItemFrom onSubmit={console.log} />
+      </section>
     </BaseLayout>
   );
 };

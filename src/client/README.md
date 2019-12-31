@@ -2,6 +2,13 @@
 
 This app is build using [Next.js](https://nextjs.org) framework. For more details use [Docs](https://nextjs.org).
 
+## How to run
+
+- Create `.env` file (see `EXAMPLE.env` as example)
+- Create [cloudinary account](https://cloudinary.com/)
+- Fill `.env` file with your credentials
+- run `npm run dev`
+
 ## Scripts
 
 ### `npm run dev`
