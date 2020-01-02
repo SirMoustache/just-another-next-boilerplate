@@ -14,7 +14,9 @@
     "install:client": "cd src/client && npm install",
     "install:server": "cd src/server && npm install",
     "install:all": "npm install && npm run install:server && npm run install:client",
-    "postinstall": "npm run install:client && npm run install:server"
+    "postinstall": "npm run install:client && npm run install:server",
+    "lint:staged": "npm run lint:staged:client",
+    "lint:staged:client": "cd src/client && npm run lint:staged"
   },
   "repository": {
     "type": "git",
@@ -29,5 +31,8 @@
   "homepage": "https://github.com/SirMoustache/just-another-next-boilerplate#readme",
   "dependencies": {
     "concurrently": "^5.0.0"
+  },
+  "devDependencies": {
+    "husky": "^3.1.0"
   }
 }

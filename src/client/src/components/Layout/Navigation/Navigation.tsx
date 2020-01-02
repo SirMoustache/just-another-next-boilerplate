@@ -6,7 +6,7 @@ import React from 'react';
 /**
  * Components
  */
-import { ActiveLink } from '../../UI/Link';
+import { RouterLink } from '../../UI/Link';
 
 /**
  * Styles
@@ -16,21 +16,18 @@ import { Root, NavigationLink } from './styles';
 const Navigation = () => {
   return (
     <Root>
-      <ActiveLink href="/" passHref>
+      <RouterLink href="/" passHref>
         <NavigationLink>Home</NavigationLink>
-      </ActiveLink>
-
-      <ActiveLink href="/shop" passHref>
+      </RouterLink>
+      <RouterLink href="/shop" passHref>
         <NavigationLink>Shop</NavigationLink>
-      </ActiveLink>
-
-      <ActiveLink href="/about" passHref>
+      </RouterLink>
+      <RouterLink href="/about" passHref>
         <NavigationLink>About</NavigationLink>
-      </ActiveLink>
-
-      <ActiveLink href="/contact" passHref>
+      </RouterLink>
+      <RouterLink href="/contact" passHref>
         <NavigationLink>Contact</NavigationLink>
-      </ActiveLink>
+      </RouterLink>
     </Root>
   );
 };

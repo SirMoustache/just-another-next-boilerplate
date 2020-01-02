@@ -5,7 +5,7 @@ import React, { FC } from 'react';
 import Link, { LinkProps } from 'next/link';
 import { useRouter } from 'next/router';
 
-export const ActiveLink: FC<LinkProps> = ({ children, ...props }) => {
+export const RouterLink: FC<LinkProps> = ({ children, ...props }) => {
   const router = useRouter();
 
   const child = React.Children.only(children);

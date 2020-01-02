@@ -2,14 +2,15 @@
  * Absolute imports
  */
 import React from 'react';
-import Head from 'next/head';
 import { NextPage } from 'next';
+import Head from 'next/head';
 
 /**
  * Components
  */
 import BaseLayout from '../../components/Layout/BaseLayout';
 import Products from '../../components/Products';
+import { RouterLink } from '../../components/UI/Link';
 
 /**
  * GraphQL
@@ -22,15 +23,21 @@ import { usePingQuery } from '../../generated';
 import {} from './styles';
 
 const ShopHomeView: NextPage = () => {
-  const { data, loading } = usePingQuery();
-
   return (
     <BaseLayout>
       <Head>
-        <title>Shop</title>
+        <title>Shop Home Page</title>
       </Head>
-
-      <Products />
+      <div>
+        <ul>
+          <li>
+            <RouterLink href="/shop/1234" passHref>
+              <a>See shop item</a>
+            </RouterLink>
+          </li>
+        </ul>
+        <Products />
+      </div>
     </BaseLayout>
   );
 };
