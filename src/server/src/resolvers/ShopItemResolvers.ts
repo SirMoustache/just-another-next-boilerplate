@@ -13,7 +13,14 @@ import {
   ObjectType,
   InputType,
   ArgsType,
+  UseMiddleware,
 } from 'type-graphql';
+
+/**
+ * Middlewares
+ */
+import { isAuth } from '../middlewares/auth';
+import { isAdmin } from '../middlewares/role';
 
 /**
  * Entities
@@ -74,6 +81,8 @@ export class ShopItemResolvers {
   }
 
   @Mutation(() => Boolean)
+  @UseMiddleware(isAuth)
+  @UseMiddleware(isAdmin)
   async createShopItem(
     @Arg('input') input: CreateShopItemRequest,
   ): Promise<boolean> {
