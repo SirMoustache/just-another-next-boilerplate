@@ -2,7 +2,7 @@
  * Absolute imports
  */
 import React from 'react';
-
+import Link, { LinkProps } from 'next/link';
 /**
  * Material UI
  */
@@ -12,6 +12,7 @@ import { Button } from '@material-ui/core';
  * Components
  */
 import { Container } from '../UI/Container';
+import { RouterLink } from '../../components/UI/Link';
 
 /**
  * GraphQL
@@ -49,13 +50,21 @@ const Products = () => {
         <ProductList>
           {data &&
             data.shopItems.map(product => (
-              <Product key={product.id}>
+              <Product>
                 <ProductMedia>
                   <ProductImage src={mockImageUrl()} />
                 </ProductMedia>
                 <ProductInner>
                   <ProductHeader>
-                    <ProductTitle>{product.title}</ProductTitle>
+                    <ProductTitle>
+                      <Link
+                        key={product.id}
+                        passHref
+                        href={`/shop/${product.id}`}
+                      >
+                        {product.title}
+                      </Link>
+                    </ProductTitle>
                     <ProductPrice>12.39$</ProductPrice>
                   </ProductHeader>
                   <ProductActions>

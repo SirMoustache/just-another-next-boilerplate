@@ -9,6 +9,7 @@ import { useRouter } from 'next/router';
 /**
  * Materila UI
  */
+import { Button } from '@material-ui/core';
 
 /**
  * Components
@@ -23,6 +24,7 @@ import BaseLayout from '../../components/Layout/BaseLayout';
 /**
  * Utils
  */
+import { mockImageUrl } from '../../utils/mockUtils';
 
 /**
  * Styles
@@ -33,10 +35,10 @@ import {
   ShopItemMedia,
   ShopItemDetails,
   ShopItemPrice,
-  ErrorDescription,
   ShopItemActions,
   ShopItemDescription,
   ShopItemTitle,
+  ShopItemImg,
 } from './styles';
 
 export type ShopItemViewProps = {
@@ -53,7 +55,9 @@ const ShopItemView: NextPage<ShopItemViewProps> = ({ theId }) => {
       </Head>
       <Root>
         <ShopItem>
-          <ShopItemMedia></ShopItemMedia>
+          <ShopItemMedia>
+            <ShopItemImg src={mockImageUrl()} />
+          </ShopItemMedia>
           <ShopItemDetails>
             <ShopItemTitle>Some basic Item</ShopItemTitle>
             <ShopItemPrice>12.23 $</ShopItemPrice>
@@ -64,7 +68,9 @@ const ShopItemView: NextPage<ShopItemViewProps> = ({ theId }) => {
               labore illo porro. Doloremque, culpa?
             </ShopItemDescription>
             <ShopItemActions>
-              <button>Add to cart</button>
+              <Button variant="contained" color="primary">
+                Add to cart
+              </Button>
             </ShopItemActions>
           </ShopItemDetails>
         </ShopItem>

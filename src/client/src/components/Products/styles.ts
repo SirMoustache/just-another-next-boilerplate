@@ -46,7 +46,12 @@ export const ProductMedia = styled.div`
   top: 0;
   left: 0;
   width: 100%;
-  padding-top: 100%;
+
+  &::before {
+    content: '';
+    display: block;
+    padding-top: 100%;
+  }
 `;
 
 export const ProductImage = styled.img`
