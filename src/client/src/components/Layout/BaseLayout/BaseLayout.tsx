@@ -23,7 +23,7 @@ const BaseLayout: FC = ({ children }) => {
   return (
     <Root>
       <Header />
-      {children}
+      <main>{children}</main>
       <Footer />
     </Root>
   );
