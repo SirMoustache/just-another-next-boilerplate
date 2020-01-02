@@ -4,6 +4,11 @@
 import React from 'react';
 
 /**
+ * Material UI
+ */
+import { Button } from '@material-ui/core';
+
+/**
  * Components
  */
 import { Container } from '../UI/Container';
@@ -14,6 +19,11 @@ import { Container } from '../UI/Container';
 import { useProductsQuery } from '../../generated';
 
 /**
+ * Utils
+ */
+import { mockImageUrl } from '../../utils/mockUtils';
+
+/**
  * Styles
  */
 import {
@@ -22,13 +32,12 @@ import {
   ProductList,
   ProductInner,
   ProductImage,
+  ProductMedia,
   ProductActions,
   ProductHeader,
   ProductTitle,
   ProductPrice,
 } from './styles';
-
-const products = Array.from({ length: 9 }, () => ({ id: Math.random() }));
 
 const Products = () => {
   const { data, loading, error } = useProductsQuery();
@@ -41,16 +50,18 @@ const Products = () => {
           {data &&
             data.shopItems.map(product => (
               <Product key={product.id}>
+                <ProductMedia>
+                  <ProductImage src={mockImageUrl()} />
+                </ProductMedia>
                 <ProductInner>
                   <ProductHeader>
                     <ProductTitle>{product.title}</ProductTitle>
                     <ProductPrice>12.39$</ProductPrice>
                   </ProductHeader>
                   <ProductActions>
-                    <button>Add to cart</button>
+                    <Button variant="contained">Add to cart</Button>
                   </ProductActions>
                 </ProductInner>
-                <ProductImage />
               </Product>
             ))}
         </ProductList>

@@ -10,6 +10,7 @@ import Link from 'next/link';
  */
 import EmptyLayout from '../../components/Layout/EmptyLayout';
 import A from '../../components/UI/A';
+import { Container } from '../../components/UI/Container';
 
 /**
  * Styles
@@ -22,13 +23,15 @@ const HomeView = () => {
       <Head>
         <title>404 - Not Found</title>
       </Head>
-      <ErrorCode>404</ErrorCode>
-      <ErrorDescription>
-        Oops! I think you are lost little randonneur,{' '}
-        <Link href="/" passHref>
-          <A title="Home Page">ride home!</A>
-        </Link>
-      </ErrorDescription>
+      <Container>
+        <ErrorCode>404</ErrorCode>
+        <ErrorDescription>
+          Oops! I think you are lost little randonneur,{' '}
+          <Link href="/" passHref>
+            <A title="Home Page">ride home!</A>
+          </Link>
+        </ErrorDescription>
+      </Container>
     </EmptyLayout>
   );
 };

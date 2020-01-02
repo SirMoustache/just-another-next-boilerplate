@@ -41,6 +41,25 @@ export const ProductInner = styled.div`
   height: 100%;
 `;
 
+export const ProductMedia = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding-top: 100%;
+`;
+
+export const ProductImage = styled.img`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  image-rendering: -webkit-optimize-contrast;
+`;
+
 export const ProductHeader = styled.div`
   padding: ${({ theme }) => `50% ${theme.gutter * 2}px ${theme.gutter * 2}px`};
 `;
@@ -58,10 +77,4 @@ export const ProductPrice = styled.span`
 export const ProductActions = styled.div`
   margin-top: auto;
   padding: ${({ theme }) => `${theme.gutter * 2}px`};
-`;
-
-export const ProductImage = styled.div`
-  padding-top: 150%;
-  background-color: #fff;
-  border-radius: 15px;
 `;

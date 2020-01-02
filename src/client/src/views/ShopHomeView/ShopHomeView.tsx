@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import Head from 'next/head';
+import { NextPage } from 'next';
 
 /**
  * Components
@@ -20,7 +21,7 @@ import { usePingQuery } from '../../generated';
  */
 import {} from './styles';
 
-const ShopHomeView = () => {
+const ShopHomeView: NextPage = () => {
   const { data, loading } = usePingQuery();
 
   return (
@@ -29,14 +30,15 @@ const ShopHomeView = () => {
         <title>Shop</title>
       </Head>
 
-      <h3>
-        {' '}
-        loading: {loading}, data: {JSON.stringify(data)}{' '}
-      </h3>
-
       <Products />
     </BaseLayout>
   );
+};
+
+ShopHomeView.getInitialProps = async ctx => {
+  var header = ctx.req && ctx.req.headers; // && ctx.req.headers.cookie;
+  console.log('ShopHomeView.getInitialProps', header);
+  return {};
 };
 
 export default ShopHomeView;
