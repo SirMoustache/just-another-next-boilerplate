@@ -3,68 +3,68 @@
 exports[`<BaseLayout /> should match snapshot 1`] = `
 <div>
   <div
-    class="sc-fzXfLV jNnMHZ"
+    class="sc-fzokOt cbzAgZ"
   >
     <header
-      class="sc-AykKG jUePou"
+      class="sc-AxhUy fzKupZ"
     >
       <div
-        class="sc-AykKH lfcPJU"
+        class="sc-AxgMl dtuOvO"
       >
         <div
-          class="sc-AykKI hDJZHg"
+          class="sc-AxheI dMmxDl"
         >
           <img
             alt="Logo"
-            class="sc-AykKJ cZyVLS"
+            class="sc-Axmtr cHPSGX"
             src=""
           />
         </div>
         <nav
-          class="sc-AykKC iQEAXQ"
+          class="sc-AxjAm hKoHcX"
         >
           <a
-            class="sc-AykKD qVxFp"
+            class="sc-AxirZ bBdspm"
             href="/"
           >
             Home
           </a>
           <a
-            class="sc-AykKD qVxFp"
+            class="sc-AxirZ bBdspm"
             href="/shop"
           >
             Shop
           </a>
           <a
-            class="sc-AykKD qVxFp"
+            class="sc-AxirZ bBdspm"
             href="/about"
           >
             About
           </a>
           <a
-            class="sc-AykKD qVxFp"
+            class="sc-AxirZ bBdspm"
             href="/contact"
           >
             Contact
           </a>
         </nav>
         <div
-          class="sc-AykKK boQPEe"
+          class="sc-AxmLO fRRgPH"
         >
           <div
-            class="sc-fzXfLP xbbKg"
+            class="sc-fzoLsD krjEt"
           >
             <div
-              class="sc-AykKE kklpUo"
+              class="sc-AxiKw gtUqja"
             >
               <span
-                class="sc-AykKF bntODw"
+                class="sc-AxhCb gLqIrz"
               />
               <span
-                class="sc-AykKF bntODw"
+                class="sc-AxhCb gLqIrz"
               />
               <span
-                class="sc-AykKF bntODw"
+                class="sc-AxhCb gLqIrz"
               />
             </div>
           </div>
@@ -79,31 +79,31 @@ exports[`<BaseLayout /> should match snapshot 1`] = `
       </span>
     </main>
     <footer
-      class="sc-fzXfLQ A-dMgR"
+      class="sc-fzpans jUZkIV"
     >
       <div
-        class="sc-fzXfLR byIYMN"
+        class="sc-fzplWN bZYfGV"
       >
         <div
-          class="sc-fzXfLS dvHLdz"
+          class="sc-fznyAO bpsAlg"
         >
           <h4
-            class="sc-fzXfLT hUTruK"
+            class="sc-fznKkj kqSDYl"
           >
             Products
           </h4>
           <div
-            class="sc-fzXfLU cKzFwF"
+            class="sc-fznZeY ibBQnD"
           >
             Random Item
           </div>
           <div
-            class="sc-fzXfLU cKzFwF"
+            class="sc-fznZeY ibBQnD"
           >
             More Items
           </div>
           <div
-            class="sc-fzXfLU cKzFwF"
+            class="sc-fznZeY ibBQnD"
           >
             Even More Items
           </div>
