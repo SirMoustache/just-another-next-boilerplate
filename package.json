@@ -33,6 +33,6 @@
     "concurrently": "^5.0.0"
   },
   "devDependencies": {
-    "husky": "^4.0.2"
+    "husky": "^4.2.5"
   }
 }
