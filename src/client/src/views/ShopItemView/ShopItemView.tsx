@@ -39,7 +39,7 @@ import {
   ShopItemDescription,
   ShopItemTitle,
   ShopItemImg,
-} from './styles';
+} from './ShopItemView.styles';
 
 export type ShopItemViewProps = {
   theId: string | string[];

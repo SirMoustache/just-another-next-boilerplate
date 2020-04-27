@@ -24,7 +24,7 @@ export default class MyDocument extends Document {
     try {
       ctx.renderPage = () =>
         originalRenderPage({
-          enhanceApp: App => props =>
+          enhanceApp: (App) => (props) =>
             composeStyles(
               <Fragment>
                 <App {...props} />
@@ -33,7 +33,7 @@ export default class MyDocument extends Document {
         });
 
       const initialProps = await Document.getInitialProps(ctx);
-      initialProps.head;
+      //initialProps.head;
 
       return {
         ...initialProps,
