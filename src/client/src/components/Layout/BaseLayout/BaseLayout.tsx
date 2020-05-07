@@ -2,6 +2,7 @@
  * Absolute imports
  */
 import React, { Fragment, FC } from 'react';
+import { motion } from 'framer-motion';
 
 /**
  * Components
@@ -23,7 +24,9 @@ const BaseLayout: FC = ({ children }) => {
   return (
     <Root>
       <Header />
-      <main>{children}</main>
+      <motion.main initial="initial" animate="animate" exit={{ opacity: 0 }}>
+        {children}
+      </motion.main>
       <Footer />
     </Root>
   );

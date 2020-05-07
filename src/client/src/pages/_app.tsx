@@ -3,6 +3,7 @@
  */
 import React, { Fragment } from 'react';
 import App from 'next/app';
+import { AnimatePresence } from 'framer-motion';
 
 /**
  * Local Imports
@@ -17,13 +18,15 @@ import ApolloClientProvider from '../containers/ApolloClientProvider';
 
 class WebClient extends App {
   render() {
-    const { Component, pageProps } = this.props;
+    const { Component, pageProps, router } = this.props;
     return (
       <Fragment>
         <ApolloClientProvider>
           <StyledThemeProvider>
             <GlobalStyles />
-            <Component {...pageProps} />
+            <AnimatePresence exitBeforeEnter>
+              <Component {...pageProps} key={router.route} />
+            </AnimatePresence>
           </StyledThemeProvider>
         </ApolloClientProvider>
       </Fragment>

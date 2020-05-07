@@ -13,7 +13,7 @@ export const FeaturedProductsList = styled.div`
   padding-bottom: ${({ theme }) => `${theme.gutter * 12}px`};
 `;
 
-export const FeaturedProduct = styled.div`
+export const Product = styled.div`
   cursor: pointer;
   position: relative;
   margin: ${({ theme }) => `${theme.gutter * 4}px`};
@@ -31,7 +31,7 @@ export const FeaturedProduct = styled.div`
   }
 `;
 
-export const FeaturedProductInner = styled.div`
+export const ProductInner = styled.div`
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -41,26 +41,26 @@ export const FeaturedProductInner = styled.div`
   height: 100%;
 `;
 
-export const FeaturedProductHeader = styled.div`
+export const ProductHeader = styled.div`
   padding: ${({ theme }) => `50% ${theme.gutter * 2}px ${theme.gutter * 2}px`};
 `;
 
-export const FeaturedProductTitle = styled.h3`
+export const ProductTitle = styled.h3`
   color: ${({ theme }) => theme.pallete.textSecondary.main};
   margin: ${({ theme }) => `0 0 ${theme.gutter * 2}px`};
   padding: 0;
 `;
 
-export const FeaturedProductPrice = styled.span`
+export const ProductPrice = styled.span`
   color: ${({ theme }) => theme.pallete.textSecondary.main};
 `;
 
-export const FeaturedProductActions = styled.div`
+export const ProductActions = styled.div`
   margin-top: auto;
   padding: ${({ theme }) => `${theme.gutter * 2}px`};
 `;
 
-export const FeaturedProductImage = styled.div`
+export const ProductImage = styled.div`
   padding-top: 150%;
   background-color: #fff;
   border-radius: 15px;

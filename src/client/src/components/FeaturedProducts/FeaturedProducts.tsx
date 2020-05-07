@@ -2,6 +2,7 @@
  * Absolute imports
  */
 import React from 'react';
+import Link from 'next/link';
 
 /**
  * Components
@@ -13,17 +14,17 @@ import { Container } from '../UI/Container';
  */
 import {
   Root,
-  FeaturedProduct,
+  Product,
   FeaturedProductsList,
-  FeaturedProductInner,
-  FeaturedProductImage,
-  FeaturedProductActions,
-  FeaturedProductHeader,
-  FeaturedProductTitle,
-  FeaturedProductPrice,
+  ProductInner,
+  ProductImage,
+  ProductActions,
+  ProductHeader,
+  ProductTitle,
+  ProductPrice,
 } from './styles';
 
-const products = Array.from({ length: 9 }, () => ({ id: Math.random() }));
+const products = Array.from({ length: 9 }, (v, i) => ({ id: `product-${i}` }));
 
 const FeaturedProducts = () => {
   return (
@@ -32,19 +33,23 @@ const FeaturedProducts = () => {
         <h2>Featured Products</h2>
 
         <FeaturedProductsList>
-          {products.map(product => (
-            <FeaturedProduct key={product.id}>
-              <FeaturedProductInner>
-                <FeaturedProductHeader>
-                  <FeaturedProductTitle>Product</FeaturedProductTitle>
-                  <FeaturedProductPrice>12.39$</FeaturedProductPrice>
-                </FeaturedProductHeader>
-                <FeaturedProductActions>
+          {products.map((product) => (
+            <Product key={product.id}>
+              <ProductInner>
+                <ProductHeader>
+                  <ProductTitle>
+                    <Link href={`/shop/${product.id}`}>
+                      <a>Product</a>
+                    </Link>
+                  </ProductTitle>
+                  <ProductPrice>12.39$</ProductPrice>
+                </ProductHeader>
+                <ProductActions>
                   <button>Add to cart</button>
-                </FeaturedProductActions>
-              </FeaturedProductInner>
-              <FeaturedProductImage />
-            </FeaturedProduct>
+                </ProductActions>
+              </ProductInner>
+              <ProductImage />
+            </Product>
           ))}
         </FeaturedProductsList>
       </Container>

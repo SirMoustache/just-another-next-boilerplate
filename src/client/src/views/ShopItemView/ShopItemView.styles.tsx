@@ -2,6 +2,50 @@
  * Absolute imports
  */
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
+
+/**
+ * Utils
+ */
+import { getMinMedia } from '../../utils/styleUtils';
+
+let easing = [0.6, -0.05, 0.01, 0.99];
+
+const slideLeftToRight = {
+  animate: { x: 0, opacity: 1 },
+  initial: { x: -200, opacity: 0 },
+  exit: { opacity: 0 },
+  transition: { delay: 0.2 },
+};
+
+const stagger = {
+  animate: {
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const fadeIn = {
+  animate: { opacity: 1 },
+  initial: { opacity: 0 },
+};
+
+const fadeInUp = {
+  initial: {
+    y: 60,
+    opacity: 0,
+    transition: { duration: 0.6, ease: easing },
+  },
+  animate: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.6,
+      ease: easing,
+    },
+  },
+};
 
 export const Root = styled.section`
   padding-top: 32px;
@@ -10,10 +54,17 @@ export const Root = styled.section`
 export const ShopItem = styled.div`
   position: relative;
   display: flex;
-  margin-left: 20%;
+  flex-direction: column;
+
+  ${getMinMedia('md')} {
+    flex-direction: row;
+    margin-left: 20%;
+  }
 `;
 
-export const ShopItemMedia = styled.div`
+export const ShopItemMedia = styled(motion.div).attrs(() => ({
+  variants: slideLeftToRight,
+}))`
   position: relative;
   align-self: center;
   flex-shrink: 0;
@@ -21,8 +72,8 @@ export const ShopItemMedia = styled.div`
   left: 0; */
   /* transform: translateX(-50%); */
   /* transform: scale(0.9); */
-  margin: 32px;
-  width: 40%;
+  width: 100%;
+
   background-color: #8cccd7;
 
   &::before {
@@ -30,9 +81,14 @@ export const ShopItemMedia = styled.div`
     display: block;
     padding-top: 100%;
   }
+
+  ${getMinMedia('md')} {
+    margin: 32px;
+    width: 40%;
+  }
 `;
 
-export const ShopItemImg = styled.img`
+export const ShopItemImg = styled(motion.img).attrs({ variant: fadeIn })`
   position: absolute;
   top: 0;
   left: 0;
@@ -43,30 +99,35 @@ export const ShopItemImg = styled.img`
   image-rendering: -webkit-optimize-contrast;
 `;
 
-export const ShopItemDetails = styled.div`
+export const ShopItemDetails = styled(motion.div).attrs({ variants: stagger })`
   background-color: white;
   min-height: 60vh;
   padding: 32px;
-  padding-left: 25%;
-  /* padding-left: calc(25% + 32px); */
-  /* flex-basis: 50%; */
-  margin-left: -25%;
+
+  ${getMinMedia('md')} {
+    padding-left: 25%;
+    /* padding-left: calc(25% + 32px); */
+    /* flex-basis: 50%; */
+    margin-left: -25%;
+  }
 `;
 
-export const ShopItemTitle = styled.h2`
+export const ShopItemTitle = styled(motion.h2).attrs({ variants: fadeInUp })`
   font-size: 48px;
   margin: 0 0 0.5em;
 `;
 
-export const ShopItemDescription = styled.div`
+export const ShopItemDescription = styled(motion.div).attrs({
+  variants: fadeInUp,
+})`
   font-size: 18px;
 `;
 
-export const ShopItemActions = styled.div`
+export const ShopItemActions = styled(motion.div).attrs({ variants: fadeInUp })`
   margin-top: 32px;
 `;
 
-export const ShopItemPrice = styled.div`
+export const ShopItemPrice = styled(motion.div).attrs({ variants: fadeInUp })`
   font-size: 22px;
   margin-bottom: 32px;
 `;

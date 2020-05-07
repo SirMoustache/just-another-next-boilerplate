@@ -26,7 +26,7 @@ const HomeView = () => {
       <Container>
         <ErrorCode>404</ErrorCode>
         <ErrorDescription>
-          Oops! I think you are lost little randonneur,{' '}
+          Oops! I think you are lost,{' '}
           <Link href="/" passHref>
             <A title="Home Page">ride home!</A>
           </Link>

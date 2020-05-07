@@ -42,7 +42,7 @@ const ShopHomeView: NextPage = () => {
   );
 };
 
-ShopHomeView.getInitialProps = async ctx => {
+ShopHomeView.getInitialProps = async (ctx) => {
   var header = ctx.req && ctx.req.headers; // && ctx.req.headers.cookie;
   console.log('ShopHomeView.getInitialProps', header);
   return {};
