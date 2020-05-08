@@ -24,7 +24,7 @@
     "graphql": "^14.6.0",
     "jsonwebtoken": "^8.5.1",
     "pg": "^8.0.0",
-    "ts-node": "^8.4.1",
+    "ts-node": "^8.10.1",
     "type-graphql": "^0.17.6",
     "typeorm": "^0.2.20",
     "validator": "^13.0.0"
