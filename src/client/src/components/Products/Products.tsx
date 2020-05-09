@@ -49,7 +49,7 @@ const Products = () => {
         <h2> Products {loading && 'Loading'}</h2>
         <ProductList>
           {data &&
-            data.shopItems.map(product => (
+            data.shopItems.map((product) => (
               <Product>
                 <ProductMedia>
                   <ProductImage src={mockImageUrl()} />

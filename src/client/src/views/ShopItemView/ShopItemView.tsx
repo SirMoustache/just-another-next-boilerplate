@@ -18,6 +18,7 @@ import { Button } from '@material-ui/core';
  */
 import { RouterLink } from '../../components/UI/Link';
 import BaseLayout from '../../components/Layout/BaseLayout';
+import ShopItemDetails from '../../components/Shop/ShopItemDetails';
 
 /**
  * GraphQL
@@ -31,17 +32,7 @@ import { mockImageUrl } from '../../utils/mockUtils';
 /**
  * Styles
  */
-import {
-  Root,
-  ShopItem,
-  ShopItemMedia,
-  ShopItemDetails,
-  ShopItemPrice,
-  ShopItemActions,
-  ShopItemDescription,
-  ShopItemTitle,
-  ShopItemImg,
-} from './ShopItemView.styles';
+import { Root, Breadcrumbs } from './ShopItemView.styles';
 
 let easing = [0.6, -0.05, 0.01, 0.99];
 
@@ -76,35 +67,24 @@ const ShopItemView: NextPage<ShopItemViewProps> = ({ theId }) => {
         <title>Shop item Home Page</title>
       </Head>
       <Root>
-        <ShopItem>
-          <ShopItemMedia>
-            <ShopItemImg src={src} key={src} />
-          </ShopItemMedia>
-          <ShopItemDetails>
-            <Link href="/">
-              <motion.div variants={fadeInUp}>
-                <a className="go-back">Back to products</a>
-              </motion.div>
-            </Link>
+        <Breadcrumbs>
+          <Link href="/">
+            <motion.div variants={fadeInUp}>
+              <a className="go-back">Back to products</a>
+            </motion.div>
+          </Link>
+        </Breadcrumbs>
 
-            <ShopItemTitle>Some basic Item</ShopItemTitle>
+        <ShopItemDetails
+          title="Some basic Item"
+          imageSrc={src}
+          price="12.23 $"
+          description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi
+          adipisci quo hic ducimus, repellat dicta laboriosam deleniti
+          obcaecati tempore molestias, quaerat laudantium animi laborum ut,
+          labore illo porro. Doloremque, culpa?"
+        />
 
-            <ShopItemPrice>12.23 $</ShopItemPrice>
-
-            <ShopItemDescription>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi
-              adipisci quo hic ducimus, repellat dicta laboriosam deleniti
-              obcaecati tempore molestias, quaerat laudantium animi laborum ut,
-              labore illo porro. Doloremque, culpa?
-            </ShopItemDescription>
-
-            <ShopItemActions>
-              <Button variant="contained" color="primary">
-                Add to cart
-              </Button>
-            </ShopItemActions>
-          </ShopItemDetails>
-        </ShopItem>
         <h2>
           Shop item {id} {theId}
         </h2>

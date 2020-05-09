@@ -24,6 +24,15 @@ interface Shadow {
   };
 }
 
+export type ContainerWidth = 'sm' | 'md' | 'lg' | 'xl';
+export type ContainerPadding = 'sm' | 'md' | 'lg' | 'xl';
+
+export interface Container {
+  container: {
+    width: Record<ContainerWidth, string>;
+    padding: Record<ContainerPadding, string>;
+  };
+}
 interface Typography {
   typography: {
     fontFamily: string;
@@ -58,5 +67,6 @@ declare module 'styled-components' {
       Shadow,
       Typography,
       Breakpoints,
-      Guter {}
+      Guter,
+      Container {}
 }

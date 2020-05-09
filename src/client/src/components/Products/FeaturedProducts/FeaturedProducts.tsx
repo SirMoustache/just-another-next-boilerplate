@@ -7,7 +7,7 @@ import Link from 'next/link';
 /**
  * Components
  */
-import { Container } from '../UI/Container';
+import { Container } from '../../UI/Container';
 
 /**
  * Styles
@@ -22,7 +22,7 @@ import {
   ProductHeader,
   ProductTitle,
   ProductPrice,
-} from './styles';
+} from './FeaturedProducts.styles';
 
 const products = Array.from({ length: 9 }, (v, i) => ({ id: `product-${i}` }));
 
