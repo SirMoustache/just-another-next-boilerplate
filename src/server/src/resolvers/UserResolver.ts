@@ -13,6 +13,7 @@ import {
   PubSub,
   PubSubEngine,
   Publisher,
+  ResolverFilterData,
 } from 'type-graphql';
 import { hash } from 'bcryptjs';
 import { getConnection } from 'typeorm';
@@ -56,22 +57,34 @@ class UsersArgs {
   take?: number;
 }
 
+type PingNotificationPayload = {
+  message: string;
+};
+
 @Resolver()
 export class UserResolver {
-  // @Query(() => String)
-  // async ping(@PubSub() pubSub: PubSubEngine) {
-  //   await pubSub.publish('NOTIFICATIONS', 'boo!');
-  //   return 'pong!';
-  // }
+  @Query(() => String)
+  async pingCustomMessage(
+    @PubSub() pubSub: PubSubEngine,
+    @Arg('name') topic: string,
+    @Arg('message', { nullable: true }) message?: string,
+  ) {
+    await pubSub.publish(topic, message);
+    return 'pong!';
+  }
 
   @Query(() => String)
-  async ping(@PubSub('NOTIFICATIONS') publish: Publisher<string>) {
-    await publish('Ping notification');
+  async ping(
+    @PubSub('NOTIFICATIONS') publish: Publisher<PingNotificationPayload>,
+  ) {
+    await publish({ message: 'Ping notification' });
     return 'pong!';
   }
 
   @Subscription({
     topics: 'NOTIFICATIONS',
+    filter: ({ payload }: ResolverFilterData<PingNotificationPayload>) =>
+      payload.message === 'foo',
   })
   onPing(): string {
     return 'There is a ping!';
