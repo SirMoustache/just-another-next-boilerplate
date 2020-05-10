@@ -30,11 +30,11 @@ export const isAdmin: MiddlewareFn<ServerContext> = async (
     throw new Error('Not authenticated');
   }
 
-  const isAdmin = user.roles.some(role => role === UserRole.admin);
+  const isAdmin = user.roles.some((role) => role === UserRole.admin);
 
-  console.log('-----------------------------------------')
-  console.log(isAdmin)
-  console.log('-----------------------------------------')
+  console.log('-----------------------------------------');
+  console.log(isAdmin);
+  console.log('-----------------------------------------');
 
   if (!isAdmin) {
     throw new Error('Not authenticated');
