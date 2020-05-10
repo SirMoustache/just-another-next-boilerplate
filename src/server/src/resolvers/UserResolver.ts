@@ -9,6 +9,10 @@ import {
   Ctx,
   UseMiddleware,
   Int,
+  Subscription,
+  PubSub,
+  PubSubEngine,
+  Publisher,
 } from 'type-graphql';
 import { hash } from 'bcryptjs';
 import { getConnection } from 'typeorm';
@@ -45,18 +49,32 @@ import { validate, isEmail } from '../utils/validation';
 
 @ArgsType()
 class UsersArgs {
-  @Field(type => Int, { nullable: true })
+  @Field((type) => Int, { nullable: true })
   skip?: number;
 
-  @Field(type => Int, { nullable: true })
+  @Field((type) => Int, { nullable: true })
   take?: number;
 }
 
 @Resolver()
 export class UserResolver {
+  // @Query(() => String)
+  // async ping(@PubSub() pubSub: PubSubEngine) {
+  //   await pubSub.publish('NOTIFICATIONS', 'boo!');
+  //   return 'pong!';
+  // }
+
   @Query(() => String)
-  ping() {
+  async ping(@PubSub('NOTIFICATIONS') publish: Publisher<string>) {
+    await publish('Ping notification');
     return 'pong!';
+  }
+
+  @Subscription({
+    topics: 'NOTIFICATIONS',
+  })
+  onPing(): string {
+    return 'There is a ping!';
   }
 
   @Query(() => String)

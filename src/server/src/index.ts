@@ -3,8 +3,9 @@
  */
 import express from 'express';
 import cors from 'cors';
+import http from 'http';
 import cookieParser from 'cookie-parser';
-import { ApolloServer } from 'apollo-server-express';
+import { ApolloServer, PubSub } from 'apollo-server-express';
 import { createConnection } from 'typeorm';
 import { buildSchema } from 'type-graphql';
 
@@ -41,16 +42,32 @@ const CLIENT_ORIGIN = 'http://localhost:3000';
 
   await createConnection();
 
+  const pubsub = new PubSub();
+
   const apolloServer = new ApolloServer({
     schema: await buildSchema({
       resolvers: [UserResolver, AuthResolver, ShopItemResolvers],
     }),
-    context: ({ req, res }) => ({ req, res }),
+    // you can pass the endpoint path for subscriptions
+    // otherwise it will be the same as main graphql endpoint
+    // subscriptions: "/subscriptions",
+    context: ({ req, res }) => ({ req, res, pubsub }),
   });
 
   apolloServer.applyMiddleware({ app, cors: false });
 
-  app.listen(PORT, () => {
-    console.log(`express server started on  http://localhost:${PORT}`);
+  // Subscriptions
+  // See https://www.apollographql.com/docs/apollo-server/data/subscriptions/#subscriptions-with-additional-middleware
+  const httpServer = http.createServer(app);
+  apolloServer.installSubscriptionHandlers(httpServer);
+
+  httpServer.listen(PORT, () => {
+    console.log(`🐷 Server started on  http://localhost:${PORT}`);
+    console.log(
+      `🐶 Server graphql ready at http://localhost:${PORT}${apolloServer.graphqlPath}`,
+    );
+    console.log(
+      `🚀 Subscriptions ready at ws://localhost:${PORT}${apolloServer.subscriptionsPath}`,
+    );
   });
 })();
