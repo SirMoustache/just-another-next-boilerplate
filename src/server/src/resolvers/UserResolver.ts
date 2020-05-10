@@ -14,6 +14,7 @@ import {
   PubSubEngine,
   Publisher,
   ResolverFilterData,
+  Root,
 } from 'type-graphql';
 import { hash } from 'bcryptjs';
 import { getConnection } from 'typeorm';
@@ -66,10 +67,10 @@ export class UserResolver {
   @Query(() => String)
   async pingCustomMessage(
     @PubSub() pubSub: PubSubEngine,
-    @Arg('name') topic: string,
+    @Arg('name') name: string,
     @Arg('message', { nullable: true }) message?: string,
   ) {
-    await pubSub.publish(topic, message);
+    await pubSub.publish(name, { message });
     return 'pong!';
   }
 
@@ -77,7 +78,7 @@ export class UserResolver {
   async ping(
     @PubSub('NOTIFICATIONS') publish: Publisher<PingNotificationPayload>,
   ) {
-    await publish({ message: 'Ping notification' });
+    await publish({ message: 'foo' });
     return 'pong!';
   }
 
@@ -86,8 +87,8 @@ export class UserResolver {
     filter: ({ payload }: ResolverFilterData<PingNotificationPayload>) =>
       payload.message === 'foo',
   })
-  onPing(): string {
-    return 'There is a ping!';
+  onPing(@Root() notificationPayload: PingNotificationPayload): string {
+    return `There is a ping message: ${notificationPayload.message}`;
   }
 
   @Query(() => String)
