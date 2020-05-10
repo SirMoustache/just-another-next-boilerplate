@@ -3,6 +3,11 @@
  */
 import styled from 'styled-components';
 
+/**
+ * Utils
+ */
+import { getMinMedia } from '../../../utils/styleUtils';
+
 export const Root = styled.section``;
 
 export const FeaturedProductsList = styled.div`
@@ -17,8 +22,13 @@ export const Product = styled.div`
   cursor: pointer;
   position: relative;
   margin: ${({ theme }) => `${theme.gutter * 4}px`};
+  flex-basis: 100%;
 
-  @media (min-width: ${({ theme }) => theme.breakpoints.lg}px) {
+  ${getMinMedia('md')} {
+    flex-basis: 40%;
+  }
+
+  ${getMinMedia('lg')} {
     flex-basis: 25%;
 
     &:nth-child(3n + 1) {

@@ -16,9 +16,9 @@ const theme: DefaultTheme = {
       light: '#161c27',
     },
     error: {
-      main: 'red',
-      dark: 'red',
-      light: 'red',
+      main: '#ff5c5c',
+      dark: '#f50000',
+      light: '#ffa8a8',
     },
     active: {
       main: '#21d4fd',
@@ -59,6 +59,20 @@ const theme: DefaultTheme = {
     md: 960,
     lg: 1280,
     xl: 1920,
+  },
+  container: {
+    width: {
+      sm: '1088px',
+      md: '1088px',
+      lg: '1366px',
+      xl: '1740px',
+    },
+    padding: {
+      sm: `${8 * 3.25}px`, // 26px
+      md: `${8 * 4.5}px`, // 36px
+      lg: `${8 * 4.5}px`,
+      xl: `${8 * 4.5}px`,
+    },
   },
 };
 

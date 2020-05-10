@@ -8,7 +8,7 @@ import Head from 'next/head';
  * Components
  */
 import BaseLayout from '../../components/Layout/BaseLayout';
-import FeaturedProducts from '../../components/FeaturedProducts';
+import FeaturedProducts from '../../components/Products/FeaturedProducts';
 import HomeHero from '../../components/HomeHero';
 
 /**
