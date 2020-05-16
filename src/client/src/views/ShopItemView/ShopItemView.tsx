@@ -17,6 +17,7 @@ import { Button } from '@material-ui/core';
  * Components
  */
 import { RouterLink } from '../../components/UI/Link';
+import { LayoutContainer } from '../../components/UI/Container';
 import BaseLayout from '../../components/Layout/BaseLayout';
 import ShopItemDetails from '../../components/Shop/ShopItemDetails';
 
@@ -32,7 +33,7 @@ import { mockImageUrl } from '../../utils/mockUtils';
 /**
  * Styles
  */
-import { Root, Breadcrumbs } from './ShopItemView.styles';
+import { Root, Breadcrumbs, Breadcrumb, Divider } from './ShopItemView.styles';
 
 let easing = [0.6, -0.05, 0.01, 0.99];
 
@@ -67,13 +68,17 @@ const ShopItemView: NextPage<ShopItemViewProps> = ({ theId }) => {
         <title>Shop item Home Page</title>
       </Head>
       <Root>
-        <Breadcrumbs>
-          <Link href="/">
-            <motion.div variants={fadeInUp}>
-              <a className="go-back">Back to products</a>
-            </motion.div>
-          </Link>
-        </Breadcrumbs>
+        <LayoutContainer>
+          <Breadcrumbs>
+            <Link href="/" passHref>
+              <Breadcrumb className="go-back">Home</Breadcrumb>
+            </Link>
+            <Divider />
+            <Link href="/shop" passHref>
+              <Breadcrumb className="go-back">Shop</Breadcrumb>
+            </Link>
+          </Breadcrumbs>
+        </LayoutContainer>
 
         <ShopItemDetails
           title="Some basic Item"

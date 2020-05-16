@@ -21,7 +21,7 @@ const theme: DefaultTheme = {
       light: '#ffa8a8',
     },
     active: {
-      main: '#21d4fd',
+      main: '#2eaff0', // OLD: '#21d4fd',
       dark: '#009ed1',
       light: '#21d4fd',
     },
