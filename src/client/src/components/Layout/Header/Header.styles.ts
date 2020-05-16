@@ -4,15 +4,20 @@
 import styled from 'styled-components';
 
 export type RootProps = {
-  active?: boolean;
+  isScrolled?: boolean;
 };
 
 export const Root = styled.header<RootProps>`
-  position: ${({ active }): string => (active ? 'fixed' : 'relative;')};
+  position: sticky;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 5;
+
+  background-color: ${({ isScrolled }) =>
+    isScrolled ? 'white' : 'transparent'};
+
+  transition: background-color 200ms ease-in-out;
 `;
 
 export const Inner = styled.div`
