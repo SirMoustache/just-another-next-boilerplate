@@ -8,48 +8,42 @@ import Link from 'next/link';
  * Components
  */
 import { Container } from '../../UI/Container';
+import FeaturedProduct from '../FeaturedProduct';
+
+/**
+ * Utils
+ */
+import { mockImageUrl } from '../../../utils/mockUtils';
 
 /**
  * Styles
  */
-import {
-  Root,
-  Product,
-  FeaturedProductsList,
-  ProductInner,
-  ProductImage,
-  ProductActions,
-  ProductHeader,
-  ProductTitle,
-  ProductPrice,
-} from './FeaturedProducts.styles';
+import { Root, Title, FeaturedProductsList } from './FeaturedProducts.styles';
 
-const products = Array.from({ length: 9 }, (v, i) => ({ id: `product-${i}` }));
+const products = Array.from({ length: 9 }, (v, i) => ({
+  id: `product-${i}`,
+  name: 'Lorem Name',
+  price: 100.25,
+  currency: '$',
+  thumbnail: mockImageUrl(),
+}));
 
 const FeaturedProducts = () => {
   return (
     <Root>
       <Container>
-        <h2>Featured Products</h2>
+        <Title>Featured Products</Title>
 
         <FeaturedProductsList>
           {products.map((product) => (
-            <Product key={product.id}>
-              <ProductInner>
-                <ProductHeader>
-                  <ProductTitle>
-                    <Link href={`/shop/${product.id}`}>
-                      <a>Product</a>
-                    </Link>
-                  </ProductTitle>
-                  <ProductPrice>12.39$</ProductPrice>
-                </ProductHeader>
-                <ProductActions>
-                  <button>Add to cart</button>
-                </ProductActions>
-              </ProductInner>
-              <ProductImage />
-            </Product>
+            <FeaturedProduct
+              key={product.id}
+              name={product.name}
+              price={product.price}
+              currency={product.currency}
+              id={product.id}
+              thumbnail={product.thumbnail}
+            />
           ))}
         </FeaturedProductsList>
       </Container>

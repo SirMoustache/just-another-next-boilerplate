@@ -54,6 +54,10 @@ export const Root = styled.div`
 
   ${getMinMedia('md')} {
     flex-direction: row;
+    margin-left: 10%;
+  }
+
+  ${getMinMedia('lg')} {
     margin-left: 20%;
   }
 `;
