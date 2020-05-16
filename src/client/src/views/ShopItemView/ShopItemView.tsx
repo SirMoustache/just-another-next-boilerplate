@@ -83,6 +83,7 @@ const ShopItemView: NextPage<ShopItemViewProps> = ({ theId }) => {
         <ShopItemDetails
           title="Some basic Item"
           imageSrc={src}
+          images={[mockImageUrl(), mockImageUrl()]}
           price="12.23 $"
           description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi
           adipisci quo hic ducimus, repellat dicta laboriosam deleniti

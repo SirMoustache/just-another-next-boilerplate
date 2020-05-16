@@ -68,6 +68,7 @@ export const Media = styled(motion.div).attrs(() => ({
   position: relative;
   align-self: center;
   flex-shrink: 0;
+  overflow: hidden;
   /* top: 32px;
   left: 0; */
   /* transform: translateX(-50%); */
@@ -88,7 +89,7 @@ export const Media = styled(motion.div).attrs(() => ({
   }
 `;
 
-export const MediaImg = styled(motion.img).attrs({ variant: fadeIn })`
+export const MediaImg = styled(motion.img)`
   position: absolute;
   top: 0;
   left: 0;
