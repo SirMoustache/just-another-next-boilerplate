@@ -95,3 +95,9 @@ const Slider = ({ chilldren, src, images }: SliderProps) => {
 };
 
 export default Slider;
+
+// https://codesandbox.io/s/framer-motion-path-drawing-drag-and-usetransform-623uf?file=/src/Example.tsx
+// https://codesandbox.io/s/framer-motion-image-gallery-pqvx3?file=/src/Example.tsx
+// https://codesandbox.io/s/framer-motion-carousel-m2g62
+// https://www.framer.com/api/motion/motionvalue/
+// https://github.com/framer/motion/issues/421
