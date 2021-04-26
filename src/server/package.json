@@ -27,7 +27,7 @@
     "ts-node": "^8.10.1",
     "type-graphql": "^0.17.6",
     "typeorm": "^0.2.24",
-    "validator": "^13.0.0"
+    "validator": "^13.6.0"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
