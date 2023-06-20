@@ -22,10 +22,10 @@
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "graphql": "^14.6.0",
-    "jsonwebtoken": "^8.5.1",
-    "pg": "^8.0.3",
+    "jsonwebtoken": "^9.0.0",
+    "pg": "^8.4.0",
     "ts-node": "^8.10.1",
-    "type-graphql": "^0.17.6",
+    "type-graphql": "^1.0.0",
     "typeorm": "^0.2.24",
     "validator": "^13.0.0"
   },
